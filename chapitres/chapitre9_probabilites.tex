@@ -1,0 +1,277 @@
+% !TEX root = ../main.tex
+%==========================================================
+%  CHAPITRE 9 — PROBABILITÉS
+%==========================================================
+
+\chapter{Probabilit\'{e}s}
+
+%----------------------------------------------------------
+\section{Probabilit\'{e}s d'un ensemble fini}
+%----------------------------------------------------------
+
+\begin{definition}[Probabilit\'{e} d'un \'{e}v\'{e}nement]
+La \textbf{probabilit\'{e}} d'un \'{e}v\'{e}nement $A$ est la somme des probabilit\'{e}s
+des \'{e}v\'{e}nements \'{e}l\'{e}mentaires qui le composent. On la note $p(A)$.
+\end{definition}
+
+\begin{propriete}[Propri\'{e}t\'{e}s fondamentales]
+Soit $\Omega$ l'univers associ\'{e} \`{a} une exp\'{e}rience al\'{e}atoire.
+
+\medskip
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|c|}
+  \hline
+  \rowcolor{forestlight}
+  \textbf{\color{forest}L'\'{e}v\'{e}nement} & \textbf{\color{forest}Probabilit\'{e}} \\
+  \hline
+  $A$ & $0 \leq p(A) \leq 1$ \\
+  \hline
+  $\bar{A}$ & $p(\bar{A}) = 1 - p(A)$ \\
+  \hline
+  $A \cup B$ & $p(A \cup B) = p(A) + p(B) - p(A \cap B)$ \\
+  \hline
+  $A \cup B$ \quad ($A$ et $B$ incompatibles) & $p(A \cup B) = p(A) + p(B)$ \\
+  \hline
+\end{tabular}
+\end{center}
+\end{propriete}
+
+\begin{theoreme}[Equiprobabilit\'{e}]
+S'il y a \textbf{\'{e}quiprobabilit\'{e}}, alors pour tout \'{e}v\'{e}nement $A$ de $\Omega$ :
+\[
+  p(A) = \frac{\mathrm{card}(A)}{\mathrm{card}(\Omega)}
+       = \frac{\text{nombre des cas favorables}}{\text{nombre des cas possibles}}
+\]
+\end{theoreme}
+
+%----------------------------------------------------------
+\section{Variable al\'{e}atoire et loi de probabilit\'{e}}
+%----------------------------------------------------------
+
+\begin{definition}[Loi de probabilit\'{e} d'une variable al\'{e}atoire]
+Soit $\Omega$ l'univers associ\'{e} \`{a} une exp\'{e}rience al\'{e}atoire.
+Pour d\'{e}finir la loi de probabilit\'{e} de la variable $X$ sur $\Omega$ :
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=2pt]
+  \item On d\'{e}termine $X(\Omega) = \{x_1;\,x_2;\,x_3;\,\ldots;\,x_n\}$
+        l'ensemble des valeurs prises par $X$.
+  \item On calcule pour chaque valeur $x_i$ sa probabilit\'{e}
+        $p_i = p(X = x_i)$ avec $i \in \{1;\,2;\,\ldots;\,n\}$.
+  \item On r\'{e}sume la loi de probabilit\'{e} de $X$ par le tableau :
+\end{enumerate}
+
+\medskip
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|c|c|c|c|c|}
+  \hline
+  \rowcolor{navylight}
+  $x_i$ & $x_1$ & $x_2$ & $x_3$ & $\cdots$ & $x_n$ \\
+  \hline
+  $p(X = x_i)$ & $p_1$ & $p_2$ & $p_3$ & $\cdots$ & $p_n$ \\
+  \hline
+\end{tabular}
+\end{center}
+
+\medskip
+\noindent Avec la condition : $p_1 + p_2 + \cdots + p_n = 1$.
+\end{definition}
+
+%----------------------------------------------------------
+\section{Probabilit\'{e} conditionnelle et ind\'{e}pendance}
+%----------------------------------------------------------
+
+\begin{definition}[Probabilit\'{e} conditionnelle]
+Soit $A$ et $B$ deux \'{e}v\'{e}nements li\'{e}s \`{a} une m\^{e}me exp\'{e}rience al\'{e}atoire
+tels que $p(A) \neq 0$.\\
+La \textbf{probabilit\'{e} de l'\'{e}v\'{e}nement $B$ sachant que $A$ est r\'{e}alis\'{e}}
+est le nombre :
+\[
+  p_A(B) = p\!\left(\frac{B}{A}\right) = \frac{p(A \cap B)}{p(A)}
+\]
+\end{definition}
+
+\begin{theoreme}[Ev\'{e}nements ind\'{e}pendants]
+Soit $A$ et $B$ deux \'{e}v\'{e}nements li\'{e}s \`{a} une m\^{e}me exp\'{e}rience al\'{e}atoire.\\
+$A$ et $B$ sont \textbf{ind\'{e}pendants} $\Longleftrightarrow$
+\[
+  p(A \cap B) = p(A) \times p(B)
+\]
+\end{theoreme}
+
+\begin{remarque}
+Si $A$ et $B$ sont ind\'{e}pendants, alors $p_A(B) = p(B)$ :
+la r\'{e}alisation de $A$ n'influe pas sur la probabilit\'{e} de $B$.
+\end{remarque}
+
+%----------------------------------------------------------
+\section{Esp\'{e}rance, variance et \'{e}cart-type}
+%----------------------------------------------------------
+
+\begin{definition}[Esp\'{e}rance, variance, \'{e}cart-type]
+Soit $X$ une variable al\'{e}atoire dont la loi de probabilit\'{e} est :
+
+\medskip
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|c|c|c|c|c|}
+  \hline
+  \rowcolor{navylight}
+  $x_i$ & $x_1$ & $x_2$ & $x_3$ & $\cdots$ & $x_n$ \\
+  \hline
+  $p(X = x_i)$ & $p_1$ & $p_2$ & $p_3$ & $\cdots$ & $p_n$ \\
+  \hline
+\end{tabular}
+\end{center}
+
+\medskip
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{|l|l|}
+  \hline
+  \rowcolor{navylight}
+  \textbf{\color{navy}Grandeur} & \textbf{\color{navy}Formule} \\
+  \hline
+  Esp\'{e}rance math\'{e}matique de $X$
+    & $E(X) = x_1 p_1 + x_2 p_2 + \cdots + x_n p_n$ \\
+  \hline
+  Variance de $X$
+    & $V(X) = E(X^2) - \bigl[E(X)\bigr]^2$ \\
+  \hline
+  Ecart-type de $X$
+    & $\sigma(X) = \sqrt{V(X)}$ \\
+  \hline
+\end{tabular}
+\end{center}
+\end{definition}
+
+\begin{exemple}
+Soit $X$ une variable al\'{e}atoire de loi :
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  \rowcolor{navylight}
+  $k$ & $-1$ & $0$ & $2$ \\
+  \hline
+  $p(X=k)$ & $\dfrac{1}{6}$ & $\dfrac{1}{3}$ & $\dfrac{1}{2}$ \\
+  \hline
+\end{tabular}
+\end{center}
+
+\medskip
+$E(X) = (-1)\cdot\dfrac{1}{6} + 0\cdot\dfrac{1}{3} + 2\cdot\dfrac{1}{2}
+       = -\dfrac{1}{6} + 1 = \dfrac{5}{6}$
+
+$E(X^2) = 1\cdot\dfrac{1}{6} + 0\cdot\dfrac{1}{3} + 4\cdot\dfrac{1}{2}
+         = \dfrac{1}{6} + 2 = \dfrac{13}{6}$
+
+$V(X) = \dfrac{13}{6} - \left(\dfrac{5}{6}\right)^2
+       = \dfrac{13}{6} - \dfrac{25}{36} = \dfrac{53}{36}$
+\end{exemple}
+
+%----------------------------------------------------------
+\section{Epreuve r\'{e}p\'{e}t\'{e}e et loi binomiale}
+%----------------------------------------------------------
+
+\begin{theoreme}[Epreuve r\'{e}p\'{e}t\'{e}e]
+Soit $p$ la probabilit\'{e} d'un \'{e}v\'{e}nement $A$ lors d'une exp\'{e}rience al\'{e}atoire.
+Si on r\'{e}p\`{e}te $n$ fois l'\'{e}preuve dans des conditions identiques,
+alors la probabilit\'{e} de r\'{e}alisation de $A$ \textbf{exactement $k$ fois}
+durant les $n$ \'{e}preuves est :
+\[
+  C_n^k \cdot p^k \cdot (1-p)^{n-k} \qquad (k \leq n)
+\]
+\end{theoreme}
+
+\begin{definition}[Loi binomiale]
+Soit $p$ la probabilit\'{e} d'un \'{e}v\'{e}nement $A$ lors d'une exp\'{e}rience al\'{e}atoire.
+On r\'{e}p\`{e}te $n$ fois l'\'{e}preuve dans des conditions identiques.
+Si la variable al\'{e}atoire $X$ est \'{e}gale au nombre de r\'{e}alisations de $A$
+durant les $n$ \'{e}preuves, alors :
+\[
+  \forall k \in \{0;\,1;\,2;\,\ldots;\,n\} \qquad
+  p(X = k) = C_n^k \cdot p^k \cdot (1-p)^{n-k}
+\]
+On dit que $X$ suit une \textbf{loi binomiale} de param\`{e}tres $n$ et $p$,
+not\'{e}e $X \sim \mathcal{B}(n,p)$.
+\end{definition}
+
+\begin{propriete}[Esp\'{e}rance et variance de la loi binomiale]
+Si $X \sim \mathcal{B}(n,p)$, alors :
+\[
+  E(X) = n \cdot p \qquad \text{et} \qquad V(X) = n \cdot p \cdot (1-p)
+\]
+\end{propriete}
+
+\begin{methode}[Reconna\^{i}tre et utiliser la loi binomiale]
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=3pt]
+  \item V\'{e}rifier que l'exp\'{e}rience est r\'{e}p\'{e}t\'{e}e $n$ fois dans des
+        \textbf{conditions identiques et ind\'{e}pendantes}.
+  \item Identifier l'\'{e}v\'{e}nement $A$ de probabilit\'{e} $p$ (\emph{succ\`{e}s}).
+  \item Identifier $X$ = nombre de succ\`{e}s $\Rightarrow X \sim \mathcal{B}(n,p)$.
+  \item Calculer $p(X = k) = C_n^k \cdot p^k \cdot (1-p)^{n-k}$.
+\end{enumerate}
+\end{methode}
+
+\begin{exemple}
+On lance un d\'{e} \'{e}quilibr\'{e} $5$ fois. Soit $X$ le nombre de fois o\`{u} on
+obtient un $6$. Alors $X \sim \mathcal{B}\!\left(5,\dfrac{1}{6}\right)$.
+
+\medskip
+$p(X = 2) = C_5^2 \cdot \left(\dfrac{1}{6}\right)^2 \cdot \left(\dfrac{5}{6}\right)^3
+           = 10 \cdot \dfrac{1}{36} \cdot \dfrac{125}{216}
+           = \dfrac{1250}{7776} \approx 0{,}161$
+
+\medskip
+$E(X) = 5 \times \dfrac{1}{6} = \dfrac{5}{6}$ \qquad
+$V(X) = 5 \times \dfrac{1}{6} \times \dfrac{5}{6} = \dfrac{25}{36}$
+\end{exemple}
+
+%----------------------------------------------------------
+\section{Exercices d'entra\^{i}nement}
+%----------------------------------------------------------
+
+\begin{exercice}[1]
+Une urne contient 4 boules rouges et 6 boules bleues.
+On tire simultan\'{e}ment 3 boules.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=4pt]
+  \item Calculer la probabilit\'{e} d'obtenir exactement 2 boules rouges.
+  \item Calculer la probabilit\'{e} d'obtenir au moins une boule rouge.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[2]
+Soit $X$ une variable al\'{e}atoire dont la loi est :
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c|c|c|c|c|}
+  \hline
+  \rowcolor{navylight}
+  $k$ & $0$ & $1$ & $2$ & $3$ \\
+  \hline
+  $p(X=k)$ & $0{,}1$ & $a$ & $2a$ & $0{,}2$ \\
+  \hline
+\end{tabular}
+\end{center}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=4pt]
+  \item D\'{e}terminer $a$.
+  \item Calculer $E(X)$, $V(X)$ et $\sigma(X)$.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[3]
+Un contr\^{o}le de qualit\'{e} montre que $5\,\%$ des pi\`{e}ces produites par
+une machine sont d\'{e}fectueuses. On pr\'{e}l\`{e}ve au hasard $10$ pi\`{e}ces.
+Soit $X$ le nombre de pi\`{e}ces d\'{e}fectueuses.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=4pt]
+  \item Quelle est la loi suivie par $X$ ? Pr\'{e}ciser ses param\`{e}tres.
+  \item Calculer $p(X = 0)$ et $p(X \geq 1)$.
+  \item Calculer $E(X)$ et $V(X)$.
+\end{enumerate}
+\end{exercice}
