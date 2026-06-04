@@ -1,0 +1,436 @@
+%==========================================================
+%  CHAPITRE 1 — LIMITES D'UNE FONCTION
+%==========================================================
+
+\chapter{Limites d'une Fonction}
+
+\begin{rappel}
+  \begin{itemize}[leftmargin=1.2cm]
+    \item Une \textbf{fonction} $f$ associe \`{a} chaque r\'{e}el $x$ de son domaine $D_f$
+          un unique r\'{e}el $f(x)$.
+    \item Les symboles $+\infty$ et $-\infty$ ne sont \textbf{pas} des r\'{e}els.
+    \item On note $\displaystyle\lim_{x \to a} f(x) = \ell$ si $f(x)$
+          se rapproche de $\ell$ quand $x$ s'approche de $a$.
+  \end{itemize}
+\end{rappel}
+
+%----------------------------------------------------------
+\section{Limites des fonctions de r\'{e}f\'{e}rence}
+%----------------------------------------------------------
+
+\subsection{Limites de \texorpdfstring{$x^n$}{x\^n} et de \texorpdfstring{$\dfrac{1}{x^n}$}{1/x\^n}}
+
+\begin{definition}[Limite en un point et \`{a} l'infini]
+  Soit $f$ une fonction et $a \in \R$ ou $a = \pm\infty$.
+  \begin{itemize}
+    \item $\displaystyle\lim_{x \to a} f(x) = \ell$ signifie que $f(x)$
+          peut \^{e}tre rendu aussi proche de $\ell$ que l'on veut,
+          pour $x$ suffisamment proche de $a$.
+    \item $\displaystyle\lim_{x \to a} f(x) = +\infty$ signifie que $f(x)$
+          d\'{e}passe tout r\'{e}el pour $x$ proche de $a$.
+  \end{itemize}
+\end{definition}
+
+\begin{propriete}[Limites de $x^n$ en $0$ et en $\pm\infty$]
+  Soit $n \in \N^*$.
+
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{1.7}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \textbf{\color{navy}Fonction}
+      & \textbf{\color{navy}$x \to 0$}
+      & \textbf{\color{navy}$x \to 0^+$}
+      & \textbf{\color{navy}$x \to +\infty$}
+      & \textbf{\color{navy}$x \to -\infty$} \\
+    \hline\hline
+    $x^n$ \; ($n$ pair)   & $0$ & $0$ & $+\infty$ & $+\infty$ \\
+    \hline
+    $x^n$ \; ($n$ impair) & $0$ & $0$ & $+\infty$ & $-\infty$ \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{propriete}
+
+\begin{propriete}[Limites de $\dfrac{1}{x^n}$ en $0$ et en $\pm\infty$]
+  Soit $n \in \N^*$.
+
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{1.9}
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    \textbf{\color{navy}Fonction}
+      & \textbf{\color{navy}$x \to 0^+$}
+      & \textbf{\color{navy}$x \to 0^-$}
+      & \textbf{\color{navy}$x \to 0$}
+      & \textbf{\color{navy}$x \to +\infty$}
+      & \textbf{\color{navy}$x \to -\infty$} \\
+    \hline\hline
+    $\dfrac{1}{x^n}$ ($n$ pair)
+      & $+\infty$ & $+\infty$ & $+\infty$ & $0$ & $0$ \\
+    \hline
+    $\dfrac{1}{x^n}$ ($n$ impair)
+      & $+\infty$ & $-\infty$ & n'existe pas & $0$ & $0$ \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{propriete}
+
+\begin{exemple}[Limites usuelles]
+  \[
+    \lim_{x \to 0}\, x^3 = 0 \qquad
+    \lim_{x \to +\infty} x^4 = +\infty \qquad
+    \lim_{x \to -\infty} x^3 = -\infty
+  \]
+  \[
+    \lim_{x \to 0^+} \frac{1}{x} = +\infty \qquad
+    \lim_{x \to 0^-} \frac{1}{x} = -\infty \qquad
+    \lim_{x \to +\infty} \frac{1}{x^2} = 0
+  \]
+\end{exemple}
+
+%----------------------------------------------------------
+\subsection{Limites des polyn\^{o}mes et fractions rationnelles en \texorpdfstring{$\pm\infty$}{±∞}}
+%----------------------------------------------------------
+
+\begin{theoreme}[Limite d'un polyn\^{o}me en $\pm\infty$]
+  La limite d'un \textbf{polyn\^{o}me} en $+\infty$ ou $-\infty$ est
+  \'{e}gale \`{a} la limite de son \textbf{terme de plus haut degr\'{e}} :
+  \[
+    \lim_{x \to \pm\infty}
+    \bigl(a_n x^n + a_{n-1}x^{n-1} + \cdots + a_0\bigr)
+    \;=\;
+    \lim_{x \to \pm\infty} a_n\,x^n
+  \]
+\end{theoreme}
+
+\begin{theoreme}[Limite d'une fraction rationnelle en $\pm\infty$]
+  La limite de $\dfrac{P(x)}{Q(x)}$ en $\pm\infty$ est \'{e}gale au
+  quotient des \textbf{termes de plus haut degr\'{e}} :
+  \[
+    \lim_{x \to \pm\infty}
+    \frac{a_n x^n + \cdots + a_0}{b_m x^m + \cdots + b_0}
+    \;=\;
+    \lim_{x \to \pm\infty} \frac{a_n\,x^n}{b_m\,x^m}
+  \]
+\end{theoreme}
+
+\begin{methode}[Calculer la limite en $\pm\infty$]
+  \begin{enumerate}
+    \item \textbf{Identifier} le terme de plus haut degr\'{e} au num\'{e}rateur
+          et au d\'{e}nominateur.
+    \item \textbf{Former} directement le quotient des termes dominants.
+    \item \textbf{Conclure} gr\^{a}ce aux limites de r\'{e}f\'{e}rence.
+  \end{enumerate}
+\end{methode}
+\newpage
+
+\begin{exemple}[R\'{e}solus]
+  \begin{itemize}
+    \item $\displaystyle\lim_{x \to +\infty}(3x^4 - 5x^2 + 2)
+          \;=\; \lim_{x \to +\infty} 3x^4 \;=\; +\infty$
+    \medskip
+    \item $\displaystyle\lim_{x \to -\infty}
+          \frac{2x^3 - x + 1}{4x^3 + 7}
+          \;=\; \lim_{x \to -\infty} \frac{2x^3}{4x^3}
+          \;=\; \frac{1}{2}$
+    \medskip
+    \item $\displaystyle\lim_{x \to +\infty}
+          \frac{x^2 + 1}{x^3 - 2}
+          \;=\; \lim_{x \to +\infty} \frac{x^2}{x^3}
+          \;=\; \lim_{x \to +\infty} \frac{1}{x} \;=\; 0$
+  \end{itemize}
+\end{exemple}
+
+%----------------------------------------------------------
+\subsection{Limites des fonctions de type \texorpdfstring{$\sqrt{u(x)}$}{sqrt(u(x))}}
+%----------------------------------------------------------
+
+\begin{rappel}[Fonction racine carr\'{e}e]
+  La fonction $x \mapsto \sqrt{x}$ est d\'{e}finie sur $[0,\,+\infty[$.
+  On a $\sqrt{x} \geq 0$ et $\bigl(\sqrt{x}\bigr)^2 = x$ pour tout $x \geq 0$.
+\end{rappel}
+
+\begin{propriete}[Limite de $\sqrt{u(x)}$]
+  \begin{align*}
+    \text{Si } \lim_{x \to x_0} u(x) = \ell \geq 0
+    &\;\Longrightarrow\;
+    \lim_{x \to x_0} \sqrt{u(x)} = \sqrt{\ell} \\[8pt]
+    \text{Si } \lim_{x \to x_0} u(x) = +\infty
+    &\;\Longrightarrow\;
+    \lim_{x \to x_0} \sqrt{u(x)} = +\infty
+  \end{align*}
+\end{propriete}
+
+\begin{methode}[Forme ind\'{e}termin\'{e}e $\infty - \infty$ avec une racine]
+  On \textbf{multiplie et divise} par l'expression \textbf{conjugu\'{e}e} :
+  \[
+    \sqrt{a} - \sqrt{b}
+    \;=\;
+    \frac{\bigl(\sqrt{a}-\sqrt{b}\bigr)\bigl(\sqrt{a}+\sqrt{b}\bigr)}
+         {\sqrt{a}+\sqrt{b}}
+    \;=\;
+    \frac{a - b}{\sqrt{a}+\sqrt{b}}
+  \]
+\end{methode}
+
+\begin{exemple}[R\'{e}solu : $\infty - \infty$ avec conjugu\'{e}]
+  Calculer $\displaystyle\lim_{x \to +\infty}\!\left(\sqrt{x^2+x}-x\right)$.
+
+  \medskip
+  \textit{Solution :}
+  \[
+    \sqrt{x^2+x} - x
+    = \frac{x^2+x - x^2}{\sqrt{x^2+x}+x}
+    = \frac{x}{\sqrt{x^2+x}+x}
+    = \frac{1}{\sqrt{1+\frac{1}{x}}+1}
+    \;\xrightarrow[x\to+\infty]{}\; \frac{1}{2}
+  \]
+\end{exemple}
+
+%----------------------------------------------------------
+\newpage
+\section{Op\'{e}rations sur les limites}
+%----------------------------------------------------------
+
+\begin{definition}[Forme ind\'{e}termin\'{e}e]
+  Une \textbf{forme ind\'{e}termin\'{e}e} (F.I.) est une expression dont on
+  ne peut pas conclure directement la limite. Les F.I. classiques :
+  \[
+    \frac{0}{0} \qquad \frac{\infty}{\infty} \qquad
+    \infty - \infty \qquad 0 \times \infty
+  \]
+\end{definition}
+
+\begin{attention}
+  Ne jamais \'{e}crire :
+  $\;\infty - \infty = 0\;$ ou $\;\dfrac{\infty}{\infty} = 1\;$
+  ou $\;0 \times \infty = 0$.
+  Ce sont des \textbf{formes ind\'{e}termin\'{e}es}, pas des r\'{e}sultats !
+\end{attention}
+
+\begin{theoreme}[Op\'{e}rations sur les limites : Somme]
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{1.6}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{\color{navy}$\ell = \lim f(x)$}
+      & \textbf{\color{navy}$\ell' = \lim g(x)$}
+      & \textbf{\color{navy}$\lim(f+g)$} \\
+    \hline\hline
+    $\ell \in \R$ & $\ell' \in \R$ & $\ell + \ell'$ \\
+    \hline
+    $\ell \in \R$ & $+\infty$ & $+\infty$ \\
+    \hline
+    $\ell \in \R$ & $-\infty$ & $-\infty$ \\
+    \hline
+    $+\infty$ & $+\infty$ & $+\infty$ \\
+    \hline
+    $-\infty$ & $-\infty$ & $-\infty$ \\
+    \hline
+    $+\infty$ & $-\infty$ & \textbf{F.I.} \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{theoreme}
+
+\begin{theoreme}[Op\'{e}rations sur les limites : Produit]
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{1.6}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{\color{navy}$\ell$}
+      & \textbf{\color{navy}$\ell'$}
+      & \textbf{\color{navy}$\lim(f \times g)$} \\
+    \hline\hline
+    $\ell \in \R$ & $\ell' \in \R$ & $\ell \times \ell'$ \\
+    \hline
+    $\ell \in \R^*$ & $\pm\infty$ & $\pm\infty$ (selon les signes) \\
+    \hline
+    $\pm\infty$ & $\pm\infty$ & $\pm\infty$ (selon les signes) \\
+    \hline
+    $0$ & $\pm\infty$ & \textbf{F.I.} \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{theoreme}
+
+\begin{theoreme}[Op\'{e}rations sur les limites : Quotient]
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{1.9}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{\color{navy}$\ell = \lim f(x)$}
+      & \textbf{\color{navy}$\ell' = \lim g(x)$}
+      & \textbf{\color{navy}$\lim\dfrac{f}{g}$} \\
+    \hline\hline
+    $\ell \in \R$ & $\ell' \in \R^*$ & $\dfrac{\ell}{\ell'}$ \\
+    \hline
+    $\ell \in \R$ & $\pm\infty$ & $0$ \\
+    \hline
+    $\pm\infty$ & $\ell' \in \R^*$ & $\pm\infty$ (selon les signes) \\
+    \hline
+    $\ell \in \R^*$ ou $\pm\infty$ & $0^+$ ou $0^-$ & $\pm\infty$ (selon les signes) \\
+    \hline
+    $\pm\infty$ & $\pm\infty$ & \textbf{F.I.} \\
+    \hline
+    $0$ & $0$ & \textbf{F.I.} \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{theoreme}
+
+%----------------------------------------------------------
+\section{Th\'{e}or\`{e}me de comparaison}
+%----------------------------------------------------------
+
+\begin{theoreme}[Comparaison : version compl\`{e}te]
+  \textbf{(1) Passage \`{a} la limite par in\'{e}galit\'{e} :}
+  \[
+    f(x) \leq g(x) \;\text{au voisinage de } x_0,\;
+    \lim f = \ell,\;\lim g = \ell'
+    \quad\Longrightarrow\quad \ell \leq \ell'
+  \]
+  \textbf{(2) Limite infinie par minoration :}
+  \[
+    f(x) \leq g(x) \;\text{ et }\;
+    \lim_{x \to x_0} f(x) = +\infty
+    \quad\Longrightarrow\quad
+    \lim_{x \to x_0} g(x) = +\infty
+  \]
+  \textbf{(3) Limite infinie par majoration :}
+  \[
+    g(x) \leq f(x) \;\text{ et }\;
+    \lim_{x \to x_0} g(x) = -\infty
+    \quad\Longrightarrow\quad
+    \lim_{x \to x_0} f(x) = -\infty
+  \]
+\end{theoreme}
+
+\begin{theoreme}[Th\'{e}or\`{e}me des gendarmes]
+  Si au voisinage de $x_0$ on a $\;U(x) \leq f(x) \leq V(x)\;$
+  et si $\displaystyle\lim_{x \to x_0} U(x) = \lim_{x \to x_0} V(x) = \ell$,
+  alors :
+  \[
+    \lim_{x \to x_0} f(x) = \ell
+  \]
+\end{theoreme}
+
+\begin{methode}[Appliquer le th\'{e}or\`{e}me des gendarmes]
+  \begin{enumerate}
+    \item \textbf{Encadrer} $f(x)$ entre deux fonctions $U(x)$ et $V(x)$.
+    \item \textbf{V\'{e}rifier} que $U$ et $V$ ont la m\^{e}me limite $\ell$ en $x_0$.
+    \item \textbf{Conclure} que $\displaystyle\lim_{x \to x_0} f(x) = \ell$.
+  \end{enumerate}
+\end{methode}
+
+\begin{exemple}[R\'{e}solu : gendarmes]
+  Montrer que $\displaystyle\lim_{x \to +\infty} \frac{\sin x}{x} = 0$.
+
+  \medskip
+  Pour tout $x > 0$ : $-1 \leq \sin x \leq 1$, donc
+  $\dfrac{-1}{x} \leq \dfrac{\sin x}{x} \leq \dfrac{1}{x}$.
+  Comme les deux extr\'{e}mit\'{e}s tendent vers $0$,
+  le th\'{e}or\`{e}me des gendarmes donne :
+  $\displaystyle\lim_{x \to +\infty} \frac{\sin x}{x} = 0$.
+\end{exemple}
+
+%----------------------------------------------------------
+\section{R\'{e}capitulatif : lever les formes ind\'{e}termin\'{e}es}
+%----------------------------------------------------------
+
+\begin{methode}[Techniques selon la forme ind\'{e}termin\'{e}e]
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{1.8}
+  \begin{tabular}{|c|l|l|}
+    \hline
+    \textbf{\color{forest}F.I.}
+      & \textbf{\color{forest}Type de fonction}
+      & \textbf{\color{forest}Technique \`{a} utiliser} \\
+    \hline\hline
+    $\dfrac{0}{0}$ ou $\dfrac{\infty}{\infty}$
+      & Polyn\^{o}mes / fractions
+      & Factoriser par le terme dominant \\
+    \hline
+    $\dfrac{0}{0}$
+      & Avec $\sqrt{\phantom{x}}$
+      & Multiplier par l'expression conjugu\'{e}e \\
+    \hline
+    $\infty - \infty$
+      & Avec $\sqrt{\phantom{x}}$
+      & Multiplier par le conjugu\'{e} \\
+    \hline
+    $0 \times \infty$
+      & G\'{e}n\'{e}ral
+      & R\'{e}\'{e}crire en $\dfrac{0}{1/\infty}$ ou $\dfrac{\infty}{1/0}$ \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{methode}
+
+\begin{exemple}[R\'{e}solu : $\dfrac{0}{0}$ par factorisation]
+  Calculer $\displaystyle\lim_{x \to 2} \frac{x^2-4}{x-2}$.
+
+  \medskip
+  En $x = 2$ : forme $\dfrac{0}{0}$.
+  On factorise : $\dfrac{x^2-4}{x-2} = \dfrac{(x-2)(x+2)}{x-2} = x+2$ \; $(x \neq 2)$.
+
+  Donc $\displaystyle\lim_{x \to 2} \frac{x^2-4}{x-2} = 4$.
+\end{exemple}
+
+\begin{exemple}[R\'{e}solu : $\dfrac{\infty}{\infty}$ par terme dominant]
+  Calculer $\displaystyle\lim_{x \to +\infty} \frac{3x^2 - x + 5}{x^2 + 4}$.
+
+  \medskip
+  On divise par $x^2$ :
+  $\dfrac{3x^2-x+5}{x^2+4}
+  = \dfrac{3 - \frac{1}{x} + \frac{5}{x^2}}{1 + \frac{4}{x^2}}
+  \;\xrightarrow[x\to+\infty]{}\; 3$.
+\end{exemple}
+ 
+%----------------------------------------------------------
+\section*{Exercices du chapitre}
+\addcontentsline{toc}{section}{Exercices : Limites d'une fonction}
+%----------------------------------------------------------
+
+\begin{exercice}[1 : Limites de r\'{e}f\'{e}rence]
+  Calculer les limites suivantes :
+  \[
+    \lim_{x \to +\infty} x^5 \qquad
+    \lim_{x \to -\infty} x^4 \qquad
+    \lim_{x \to 0^+} \frac{1}{x^3} \qquad
+    \lim_{x \to 0^-} \frac{1}{x^2}
+  \]
+\end{exercice}
+
+\begin{exercice}[2 : Polyn\^{o}mes et fractions]
+  Calculer les limites en $+\infty$ et $-\infty$ :
+  \[
+    f(x) = 4x^3 - 2x^2 + 7 \qquad
+    g(x) = \frac{2x^2 - 3x + 1}{x^2 + x - 1} \qquad
+    h(x) = \frac{x^3-1}{x^2+x}
+  \]
+\end{exercice}
+
+\begin{exercice}[3 : Formes ind\'{e}termin\'{e}es]
+  Lever les F.I. et calculer :
+  \begin{multicols}{2}
+  \begin{enumerate}
+    \item $\displaystyle\lim_{x \to 3} \frac{x^2-9}{x-3}$
+    \item $\displaystyle\lim_{x \to +\infty}(\sqrt{x+1}-\sqrt{x})$
+    \item $\displaystyle\lim_{x \to +\infty} \frac{x^2-1}{x+1}$
+    \item $\displaystyle\lim_{x \to 0} \frac{\sqrt{x+1}-1}{x}$
+  \end{enumerate}
+  \end{multicols}
+\end{exercice}
+\begin{exercice}[4 : Th\'{e}or\`{e}me des gendarmes]
+  On sait que pour tout $x > 0$ :
+  $\dfrac{x^2-1}{x} \leq f(x) \leq \dfrac{x^2+1}{x}$.
+  D\'{e}terminer $\displaystyle\lim_{x \to +\infty} \dfrac{f(x)}{x}$.
+\end{exercice}

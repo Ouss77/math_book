@@ -1,0 +1,387 @@
+%==========================================================
+%  CHAPITRE 8 — CALCUL INTÉGRAL
+%==========================================================
+
+\chapter{Calcul Int\'{e}gral}
+
+\begin{rappel}[Lien avec les primitives]
+  Si $F$ est une primitive de $f$ sur $[a,b]$, alors :
+  \[
+    \int_a^b f(x)\,dx = \bigl[F(x)\bigr]_a^b = F(b) - F(a)
+  \]
+  Le calcul int\'{e}gral g\'{e}n\'{e}ralise la notion de primitive
+  en donnant une \textbf{valeur num\'{e}rique} \`{a} l'int\'{e}grale.
+\end{rappel}
+
+%----------------------------------------------------------
+\section{Int\'{e}grale d'une fonction continue}
+%----------------------------------------------------------
+
+\begin{definition}[Int\'{e}grale de $a$ \`{a} $b$]
+  Soit $f$ une fonction \textbf{continue} sur $[a,b]$ et $F$
+  une primitive de $f$ sur $[a,b]$.
+
+  \medskip
+  L'\textbf{int\'{e}grale de $f$ de $a$ \`{a} $b$} est le nombre r\'{e}el :
+  \[
+    \boxed{\int_a^b f(x)\,dx = \Bigl[F(x)\Bigr]_a^b = F(b) - F(a)}
+  \]
+\end{definition}
+
+\begin{exemple}[R\'{e}solus : calculs d'int\'{e}grales]
+  \begin{itemize}
+    \item $\displaystyle\int_1^3 (2x+1)\,dx
+      = \bigl[x^2+x\bigr]_1^3
+      = (9+3) - (1+1) = 12 - 2 = 10$
+
+    \medskip
+    \item $\displaystyle\int_0^1 e^x\,dx
+      = \bigl[e^x\bigr]_0^1
+      = e^1 - e^0 = e - 1$
+
+    \medskip
+    \item $\displaystyle\int_1^e \frac{1}{x}\,dx
+      = \bigl[\ln x\bigr]_1^e
+      = \ln e - \ln 1 = 1 - 0 = 1$
+  \end{itemize}
+\end{exemple}
+
+%----------------------------------------------------------
+\section{Propri\'{e}t\'{e}s de l'int\'{e}grale}
+%----------------------------------------------------------
+
+\begin{propriete}[Propri\'{e}t\'{e}s fondamentales]
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{2.2}
+  \begin{tabular}{|p{4cm}|p{8cm}|}
+    \hline
+    \textbf{\color{navy}Propri\'{e}t\'{e}}
+      & \textbf{\color{navy}Formule} \\
+    \hline\hline
+    Bornes \'{e}gales
+      & $\displaystyle\int_a^a f(x)\,dx = 0$ \\
+    \hline
+    Inversion des bornes
+      & $\displaystyle\int_b^a f(x)\,dx = -\int_a^b f(x)\,dx$ \\
+    \hline
+    Lin\'{e}arit\'{e}
+      & $\displaystyle\int_a^b \bigl[f(x)+g(x)\bigr]dx
+         = \int_a^b f(x)\,dx + \int_a^b g(x)\,dx$ \\
+    \hline
+    Homog\'{e}n\'{e}it\'{e}
+      & $\displaystyle\int_a^b kf(x)\,dx = k\int_a^b f(x)\,dx$
+        \quad ($k \in \R$) \\
+    \hline
+    Relation de Chasles
+      & $\displaystyle\int_a^b f(x)\,dx
+         = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx$ \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{propriete}
+
+\begin{propriete}[Int\'{e}grale et ordre]
+  \begin{itemize}
+    \item Si $f(x) \geq 0$ sur $[a,b]$, alors
+          $\displaystyle\int_a^b f(x)\,dx \geq 0$
+    \item Si $f(x) \geq g(x)$ sur $[a,b]$, alors
+          $\displaystyle\int_a^b f(x)\,dx \geq \int_a^b g(x)\,dx$
+  \end{itemize}
+\end{propriete}
+
+%----------------------------------------------------------
+\section{Valeur moyenne}
+%----------------------------------------------------------
+
+\begin{definition}[Valeur moyenne d'une fonction]
+  Soit $f$ continue sur $[a,b]$.
+  La \textbf{valeur moyenne} de $f$ sur $[a,b]$ est :
+  \[
+    \mu = \frac{1}{b-a}\int_a^b f(x)\,dx
+  \]
+\end{definition}
+
+\begin{exemple}[R\'{e}solu]
+  Valeur moyenne de $f(x) = x^2$ sur $[0,3]$ :
+  \[
+    \mu = \frac{1}{3-0}\int_0^3 x^2\,dx
+        = \frac{1}{3}\Bigl[\frac{x^3}{3}\Bigr]_0^3
+        = \frac{1}{3} \times \frac{27}{3}
+        = \frac{1}{3} \times 9 = 3
+  \]
+\end{exemple}
+
+%----------------------------------------------------------
+\section{Int\'{e}gration par parties}
+%----------------------------------------------------------
+
+\begin{theoreme}[Int\'{e}gration par parties (IPP)]
+  Si $u$ et $v$ sont deux fonctions d\'{e}rivables sur $[a,b]$, alors :
+  \[
+    \boxed{\int_a^b u(x)\,v'(x)\,dx
+    = \Bigl[u(x)\,v(x)\Bigr]_a^b - \int_a^b u'(x)\,v(x)\,dx}
+  \]
+\end{theoreme}
+
+\begin{methode}[Choisir $u$ et $v'$ pour une IPP]
+  \begin{enumerate}
+    \item \textbf{Choisir} $u$ tel que $u'$ soit plus simple que $u$.
+    \item \textbf{Choisir} $v'$ tel que $v$ soit facile \`{a} trouver.
+    \item R\`{e}gle pratique : pr\'{e}f\'{e}rer $u = \ln$, $u = x^n$,
+          et $v' = e^x$, $v' = \cos x$, $v' = \sin x$.
+    \item Calculer $\bigl[u\,v\bigr]_a^b$ puis la nouvelle int\'{e}grale.
+  \end{enumerate}
+\end{methode}
+
+\begin{exemple}[R\'{e}solu : IPP]
+  Calculer $\displaystyle\int_0^1 x\,e^x\,dx$.
+
+  \medskip
+  On pose $u = x$ et $v' = e^x$,
+  donc $u' = 1$ et $v = e^x$.
+
+  \[
+    \int_0^1 x\,e^x\,dx
+    = \bigl[x\,e^x\bigr]_0^1 - \int_0^1 1 \cdot e^x\,dx
+    = (1 \cdot e - 0) - \bigl[e^x\bigr]_0^1
+    = e - (e - 1) = 1
+  \]
+\end{exemple}
+
+\begin{exemple}[R\'{e}solu : IPP avec $\ln$]
+  Calculer $\displaystyle\int_1^e \ln x\,dx$.
+
+  \medskip
+  On pose $u = \ln x$ et $v' = 1$,
+  donc $u' = \dfrac{1}{x}$ et $v = x$.
+
+  \[
+    \int_1^e \ln x\,dx
+    = \bigl[x\ln x\bigr]_1^e - \int_1^e x \cdot \frac{1}{x}\,dx
+    = (e\ln e - 1\ln 1) - \int_1^e 1\,dx
+    = e - 0 - \bigl[x\bigr]_1^e
+    = e - (e - 1) = 1
+  \]
+\end{exemple}
+
+%----------------------------------------------------------
+\section{Calcul d'aires}
+%----------------------------------------------------------
+
+\begin{definition}[Unit\'{e} d'aire]
+  Dans un rep\`{e}re orthogonal $(O,\vec{i},\vec{j})$,
+  l'\textbf{unit\'{e} d'aire} (u.A.) est l'aire du rectangle bâti
+  \`{a} partir des points $O$, $I$ et $J$ :
+  \[
+    1\,\text{u.A.} = \|\vec{i}\| \times \|\vec{j}\|
+  \]
+\end{definition}
+
+\begin{propriete}[Calcul d'aires : cas g\'{e}n\'{e}ral]
+  L'aire du domaine d\'{e}limit\'{e} par $\mathcal{C}_f$, l'axe des abscisses
+  et les droites $x = a$, $x = b$ est :
+  \[
+    \mathcal{A} = \left(\int_a^b \bigl|f(x)\bigr|\,dx\right)\text{u.A.}
+  \]
+  L'aire du domaine d\'{e}limit\'{e} par $\mathcal{C}_f$, $\mathcal{C}_g$
+  et les droites $x = a$, $x = b$ est :
+  \[
+    \mathcal{A} = \left(\int_a^b \bigl|f(x)-g(x)\bigr|\,dx\right)\text{u.A.}
+  \]
+\end{propriete}
+
+\begin{propriete}[Cas particuliers selon le signe de $f$]
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{2.2}
+  \begin{tabular}{|p{6cm}|p{6.5cm}|}
+    \hline
+    \textbf{\color{navy}Situation}
+      & \textbf{\color{navy}Aire} \\
+    \hline\hline
+    $f(x) \geq 0$ sur $[a,b]$
+      & $\mathcal{A} = \left(\displaystyle\int_a^b f(x)\,dx\right)\text{u.A.}$ \\
+    \hline
+    $f(x) \leq 0$ sur $[a,b]$
+      & $\mathcal{A} = \left(\displaystyle\int_a^b -f(x)\,dx\right)\text{u.A.}$ \\
+    \hline
+    $f \geq 0$ sur $[a,c]$ et $f \leq 0$ sur $[c,b]$
+      & $\mathcal{A} = \left(\displaystyle\int_a^c f(x)\,dx
+        + \int_c^b -f(x)\,dx\right)\text{u.A.}$ \\
+    \hline
+    $\mathcal{C}_f$ au-dessus de $\mathcal{C}_g$ sur $[a,b]$
+      & $\mathcal{A} = \left(\displaystyle\int_a^b
+        \bigl(f(x)-g(x)\bigr)dx\right)\text{u.A.}$ \\
+    \hline
+    $\mathcal{C}_f$ au-dessus de $\mathcal{C}_g$ sur $[a,c]$\\
+    $\mathcal{C}_f$ au-dessous de $\mathcal{C}_g$ sur $[c,b]$
+      & $\mathcal{A} = \left(\displaystyle\int_a^c(f-g)\,dx
+        + \int_c^b(g-f)\,dx\right)\text{u.A.}$ \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{propriete}
+
+\begin{methode}[Calculer une aire entre deux courbes]
+  \begin{enumerate}
+    \item Trouver les \textbf{points d'intersection} : r\'{e}soudre $f(x) = g(x)$.
+    \item D\'{e}terminer \textbf{quelle courbe est au-dessus} sur chaque intervalle.
+    \item Calculer $\displaystyle\int_a^b |f(x) - g(x)|\,dx$
+          en d\'{e}coupant si n\'{e}cessaire.
+    \item \textbf{Multiplier} par l'unit\'{e} d'aire.
+  \end{enumerate}
+\end{methode}
+
+\begin{exemple}[R\'{e}solu : aire entre deux courbes]
+  Aire entre $f(x) = x^2$ et $g(x) = x$ sur $[0,1]$.
+
+  \medskip
+  \textbf{\'{E}tape 1 :} $x^2 = x \Rightarrow x(x-1) = 0 \Rightarrow x = 0$ ou $x = 1$.
+
+  \textbf{\'{E}tape 2 :} Sur $[0,1]$, $g(x) = x \geq x^2 = f(x)$.
+
+  \textbf{\'{E}tape 3 :}
+  \[
+    \mathcal{A} = \int_0^1 (x - x^2)\,dx
+    = \left[\frac{x^2}{2} - \frac{x^3}{3}\right]_0^1
+    = \frac{1}{2} - \frac{1}{3} = \frac{1}{6}\;\text{u.A.}
+  \]
+
+  \begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines  = center,
+      xlabel      = {$x$},
+      ylabel      = {$y$},
+      xmin = -0.3, xmax = 1.5,
+      ymin = -0.2, ymax = 1.3,
+      xtick       = {0,0.5,1},
+      ytick       = {0,0.5,1},
+      grid        = major,
+      grid style  = {gray!20},
+      width = 9cm, height = 7cm,
+    ]
+      % Zone hachurée
+      \addplot[fill=navy!15, draw=none, domain=0:1, samples=100]
+        {x} \closedcycle;
+      \addplot[fill=white, draw=none, domain=0:1, samples=100]
+        {x^2} \closedcycle;
+
+      % Courbe g(x) = x
+      \addplot[forest, very thick, domain=-0.2:1.4]
+        {x};
+      \addlegendentry{$g(x)=x$}
+
+      % Courbe f(x) = x²
+      \addplot[burgundy, very thick, domain=-0.1:1.3, samples=100]
+        {x^2};
+      \addlegendentry{$f(x)=x^2$}
+
+      % Points d'intersection
+      \addplot[mark=*, mark size=3pt, black]
+        coordinates {(0,0)(1,1)};
+
+      % Annotation aire
+      \node[navy, font=\small\bfseries] at (axis cs:0.5,0.4)
+        {$\mathcal{A}=\frac{1}{6}$\,u.A.};
+    \end{axis}
+  \end{tikzpicture}
+  \end{center}
+\end{exemple}
+
+%----------------------------------------------------------
+\section{Calcul de volumes de r\'{e}volution}
+%----------------------------------------------------------
+
+\begin{definition}[Volume de r\'{e}volution]
+  Le \textbf{volume} du solide engendr\'{e} par la rotation de
+  $\mathcal{C}_f$ sur $[a,b]$ d'un tour complet autour de l'axe
+  des abscisses est :
+  \[
+    \boxed{V = \pi \int_a^b \bigl[f(x)\bigr]^2\,dx \quad \text{u.v.}}
+  \]
+  o\`{u} u.v. d\'{e}signe l'unit\'{e} de volume.
+\end{definition}
+
+\begin{exemple}[R\'{e}solu : volume de r\'{e}volution]
+  Volume engendr\'{e} par $f(x) = \sqrt{x}$ sur $[0,4]$
+  autour de l'axe des abscisses :
+  \[
+    V = \pi\int_0^4 (\sqrt{x})^2\,dx
+      = \pi\int_0^4 x\,dx
+      = \pi\left[\frac{x^2}{2}\right]_0^4
+      = \pi \times 8 = 8\pi\;\text{u.v.}
+  \]
+\end{exemple}
+
+\newpage
+%----------------------------------------------------------
+\section*{Exercices du chapitre}
+\addcontentsline{toc}{section}{Exercices : Calcul int\'{e}gral}
+%----------------------------------------------------------
+
+\begin{exercice}[1 : Calculs d'int\'{e}grales]
+  Calculer les int\'{e}grales suivantes :
+  \begin{multicols}{2}
+  \begin{enumerate}
+    \item $\displaystyle\int_0^2 (3x^2-2x+1)\,dx$
+    \item $\displaystyle\int_1^4 \frac{1}{\sqrt{x}}\,dx$
+    \item $\displaystyle\int_0^{\ln 2} e^x\,dx$
+    \item $\displaystyle\int_1^e \frac{2}{x}\,dx$
+    \item $\displaystyle\int_0^{\pi} \cos x\,dx$
+    \item $\displaystyle\int_0^1 \frac{x}{x^2+1}\,dx$
+  \end{enumerate}
+  \end{multicols}
+\end{exercice}
+
+\begin{exercice}[2 : Propri\'{e}t\'{e}s]
+  \begin{enumerate}
+    \item Sachant que $\displaystyle\int_0^3 f(x)\,dx = 7$ et
+          $\displaystyle\int_0^3 g(x)\,dx = 2$, calculer
+          $\displaystyle\int_0^3 [3f(x) - 2g(x)]\,dx$.
+    \item Sachant que $\displaystyle\int_0^5 f(x)\,dx = 10$ et
+          $\displaystyle\int_0^3 f(x)\,dx = 4$, calculer
+          $\displaystyle\int_3^5 f(x)\,dx$.
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[3 : Valeur moyenne]
+  Calculer la valeur moyenne de :
+  \begin{enumerate}
+    \item $f(x) = x^2 + 1$ sur $[0,3]$
+    \item $f(x) = e^x$ sur $[0,2]$
+    \item $f(x) = \dfrac{1}{x}$ sur $[1,e]$
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[4 : Int\'{e}gration par parties]
+  Calculer par une int\'{e}gration par parties :
+  \begin{enumerate}
+    \item $\displaystyle\int_0^1 x\,e^{2x}\,dx$
+    \item $\displaystyle\int_1^e x\ln x\,dx$
+    \item $\displaystyle\int_0^{\pi} x\sin x\,dx$
+    \item $\displaystyle\int_0^1 (x+1)e^x\,dx$
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[5 : Calcul d'aires]
+  \begin{enumerate}
+    \item Calculer l'aire du domaine d\'{e}limit\'{e} par $\mathcal{C}_f$,
+          l'axe des abscisses et les droites $x=0$, $x=2$
+          pour $f(x) = x^2 - x$.
+    \item Calculer l'aire entre $f(x) = x^2$ et $g(x) = \sqrt{x}$
+          sur $[0,1]$.
+    \item Calculer l'aire entre $f(x) = e^x$ et $g(x) = x + 1$
+          sur $[0,2]$.
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[6 : Volume de r\'{e}volution]
+  \begin{enumerate}
+    \item Calculer le volume engendr\'{e} par $f(x) = x$ sur $[0,3]$
+          autour de l'axe des abscisses.
+          \textit{(V\'{e}rifier : on doit trouver le volume d'un c\^{o}ne.)}
+    \item Calculer le volume engendr\'{e} par $f(x) = e^x$ sur $[0,1]$.
+  \end{enumerate}
+\end{exercice}

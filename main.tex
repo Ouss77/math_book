@@ -1,0 +1,351 @@
+\documentclass[12pt, a4paper]{book}
+ 
+%----------------------------------------------------------
+%  ENCODAGE & LANGUE
+%----------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{lmodern}
+ 
+%----------------------------------------------------------
+%  MATHS
+%----------------------------------------------------------
+\usepackage{amsmath, amssymb, mathtools}
+ 
+%----------------------------------------------------------
+%  MISE EN PAGE
+%----------------------------------------------------------
+\usepackage{geometry}
+\geometry{a4paper, top=3cm, bottom=3cm, left=3cm, right=3cm, headheight=15pt}
+ 
+%----------------------------------------------------------
+%  COULEURS — 3 couleurs cohérentes
+%----------------------------------------------------------
+\usepackage{xcolor}
+ 
+\definecolor{navy}{RGB}{18, 52, 96}
+\definecolor{navylight}{RGB}{235, 241, 250}
+\definecolor{forest}{RGB}{26, 80, 50}
+\definecolor{forestlight}{RGB}{232, 245, 235}
+\definecolor{burgundy}{RGB}{120, 25, 40}
+\definecolor{burgundylight}{RGB}{253, 235, 238}
+\definecolor{charcoal}{RGB}{52, 58, 64}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\pgfplotsset{compat=1.18}
+ 
+%----------------------------------------------------------
+%  BOÎTES  (tcolorbox)
+%----------------------------------------------------------
+\usepackage[most]{tcolorbox}
+ 
+\newtcolorbox{definition}[1][]{
+  breakable,
+  before = {\par\vspace{6pt}},
+  after  = {\par\vspace{6pt}},
+  colback=navylight, colframe=navy,
+  boxrule=0pt, leftrule=5pt, arc=0pt,
+  left=9pt, right=7pt, top=6pt, bottom=6pt,
+  fonttitle=\bfseries\color{navy},
+  detach title,
+  before upper={\tcbtitle\par\smallskip},
+  title={D\'{e}finition \ifx&#1&\else\normalfont\itshape{} : #1\fi}
+}
+ 
+\newtcolorbox{theoreme}[1][]{
+  breakable,
+  before={\par\vspace{6pt}}, after={\par\vspace{6pt}},
+  colback=navylight, colframe=navy,
+  boxrule=1pt, arc=3pt,
+  left=9pt, right=7pt, top=6pt, bottom=6pt,
+  coltitle=white, colbacktitle=navy,
+  fonttitle=\bfseries,
+  title={Th\'{e}or\`{e}me \ifx&#1&\else\normalfont\itshape{} : #1\fi},
+  toptitle=3pt, bottomtitle=3pt
+}
+ 
+\newtcolorbox{propriete}[1][]{
+  breakable,
+  before={\par\vspace{6pt}}, after={\par\vspace{6pt}},
+  colback=forestlight, colframe=forest,
+  boxrule=0pt, leftrule=5pt, arc=0pt,
+  left=9pt, right=7pt, top=6pt, bottom=6pt,
+  fonttitle=\bfseries\color{forest},
+  detach title,
+  before upper={\tcbtitle\par\smallskip},
+  title={Propri\'{e}t\'{e} \ifx&#1&\else\normalfont\itshape{} : #1\fi}
+}
+ 
+\newtcolorbox{methode}[1][]{
+  breakable,
+  before={\par\vspace{6pt}}, after={\par\vspace{6pt}},
+  colback=forestlight, colframe=forest,
+  boxrule=1pt, arc=3pt,
+  left=9pt, right=7pt, top=6pt, bottom=6pt,
+  coltitle=white, colbacktitle=forest,
+  fonttitle=\bfseries,
+  title={M\'{e}thode \ifx&#1&\else\normalfont\itshape{} : #1\fi},
+  toptitle=3pt, bottomtitle=3pt
+}
+ 
+\newtcolorbox{rappel}[1][]{
+  breakable,
+  before={\par\vspace{6pt}}, after={\par\vspace{6pt}},
+  colback=burgundylight, colframe=burgundy,
+  boxrule=0pt, leftrule=6pt, arc=0pt,
+  left=9pt, right=7pt, top=6pt, bottom=6pt,
+  fonttitle=\bfseries\color{burgundy},
+  detach title,
+  before upper={\tcbtitle\par\smallskip},
+  title={Rappel \ifx&#1&\else\normalfont\itshape{} : #1\fi}
+}
+ 
+\newtcolorbox{attention}{
+  breakable,
+  before={\par\vspace{6pt}}, after={\par\vspace{6pt}},
+  colback=burgundylight, colframe=burgundy,
+  boxrule=1pt, arc=3pt,
+  left=9pt, right=7pt, top=6pt, bottom=6pt,
+  coltitle=white, colbacktitle=burgundy,
+  fonttitle=\bfseries,
+  title={Attention !},
+  toptitle=3pt, bottomtitle=3pt
+}
+ 
+\newtcolorbox{exemple}[1][]{
+  breakable,
+  before={\par\vspace{6pt}}, after={\par\vspace{6pt}},
+  colback=gray!7, colframe=charcoal!35,
+  boxrule=0pt, leftrule=4pt, arc=0pt,
+  left=9pt, right=7pt, top=6pt, bottom=6pt,
+  fonttitle=\bfseries\color{charcoal},
+  detach title,
+  before upper={\tcbtitle\par\smallskip},
+  title={Exemple \ifx&#1&\else\normalfont\itshape{} : #1\fi}
+}
+ 
+\newtcolorbox{remarque}{
+  breakable,
+  before={\par},
+  colback=white, colframe=gray!40,
+  boxrule=0pt, leftrule=3pt, arc=0pt,
+  left=9pt, right=7pt, top=4pt, bottom=4pt,
+  fontupper=\small\itshape\color{charcoal},
+  before upper={\textbf{\small\color{gray!60!black}Remarque.}\enspace}
+}
+ 
+\newtcolorbox{exercice}[1][]{
+  breakable,
+  before={\par\vspace{6pt}}, after={\par\vspace{6pt}},
+  colback=white, colframe=navy!45,
+  boxrule=0.8pt, arc=3pt,
+  left=9pt, right=7pt, top=6pt, bottom=6pt,
+  fonttitle=\bfseries\color{navy},
+  detach title,
+  before upper={\tcbtitle\par\smallskip},
+  title={Exercice \ifx&#1&\else #1\fi}
+}
+ 
+\newtcolorbox{corollaire}[1][]{
+  breakable,
+  before={\par\vspace{6pt}}, after={\par\vspace{6pt}},
+  colback=forestlight, colframe=forest!60,
+  boxrule=0.8pt, arc=3pt,
+  left=9pt, right=7pt, top=6pt, bottom=6pt,
+  fonttitle=\bfseries\color{forest},
+  detach title,
+  before upper={\tcbtitle\par\smallskip},
+  title={Corollaire \ifx&#1&\else\normalfont\itshape{} : #1\fi}
+}
+ 
+%----------------------------------------------------------
+%  AUTRES PACKAGES
+%----------------------------------------------------------
+\usepackage{array, booktabs, colortbl, tabularx}
+\usepackage{multirow}       % ← pour le tableau d'en-tête de l'examen
+\usepackage{multicol}
+\usepackage{lastpage}       % ← pour "Page X / Y" dans l'examen
+\usepackage{ifthen}         % ← pour la commande \pts dans l'examen
+\usepackage{enumitem}
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$\diamond$}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+ 
+%----------------------------------------------------------
+%  EN-TÊTES & PIEDS DE PAGE
+%----------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\color{navy}\textbf{Math\'{e}matiques \textendash{} Bac \'{E}conomie}}
+\fancyhead[RO]{\small\color{charcoal}\leftmark}
+\fancyfoot[C]{\small\color{charcoal}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\color{navy!40}\hrule width\headwidth height\headrulewidth}
+ 
+%----------------------------------------------------------
+%  STYLE DES TITRES
+%----------------------------------------------------------
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{navy}}
+  {\normalfont\normalsize\color{charcoal!70}\MakeUppercase{\chaptertitlename}\ \thechapter}
+  {10pt}{}
+  [{\color{navy!30}\titlerule[1.5pt]}]
+\titlespacing{\chapter}{0pt}{10pt}{30pt}
+ 
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{navy}}
+  {\thesection}{1em}{}
+  [{\color{navy!20}\titlerule[0.6pt]}]
+\titlespacing{\section}{0pt}{20pt}{10pt}
+ 
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{forest}}
+  {\thesubsection}{1em}{}
+\titlespacing{\subsection}{0pt}{14pt}{6pt}
+ 
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\color{charcoal}}
+  {\thesubsubsection}{1em}{}
+ 
+%----------------------------------------------------------
+%  COMMANDES MATHÉMATIQUES
+%----------------------------------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\dx}{\,dx}
+ 
+%----------------------------------------------------------
+%  PAGE DE TITRE — personnalisée sans \maketitle
+%----------------------------------------------------------
+\begin{document}
+
+\begin{titlepage}
+  \centering
+  \vspace*{2cm}
+
+  {\color{navy!30}\rule{\linewidth}{1.5pt}}\\[1.2cm]
+
+  {\Huge\bfseries\color{navy} Math\'{e}matiques}\\[0.6cm]
+
+  {\large\color{charcoal}
+    2\`{e}me Baccalaur\'{e}at \textemdash{} Sciences \'{E}conomiques}\\[1.2cm]
+
+  {\color{navy!30}\rule{\linewidth}{1.5pt}}
+
+  \vfill
+
+  % Auteur principal
+  \begin{center}
+    {\large\color{charcoal!60}\textit{Auteur}}\\[0.3cm]
+    {\LARGE\bfseries\color{navy} Anass Fawzi}
+  \end{center}
+
+  \vspace{1.5cm}
+
+  % Séparateur discret
+  {\color{navy!15}\rule{6cm}{0.5pt}}
+
+  \vspace{0.8cm}
+
+  % Co-rédacteur
+  \begin{center}
+    {\small\color{charcoal!60}\textit{Co-r\'{e}dacteur}}\\[0.3cm]
+    {\large\bfseries\color{charcoal} Oussama Sassour}
+  \end{center}
+
+  \vspace{1.5cm}
+
+  {\small\color{charcoal!50} Ann\'{e}e scolaire 2024\,--\,2025}
+
+  \vspace{1cm}
+\end{titlepage}
+
+%----------------------------------------------------------
+%  AVANT-PROPOS
+%----------------------------------------------------------
+\chapter*{Avant-propos}
+\addcontentsline{toc}{chapter}{Avant-propos}
+
+Ce livre de math\'{e}matiques est destin\'{e} aux \'{e}l\`{e}ves de
+\textbf{2\`{e}me Baccalaur\'{e}at Sciences \'{E}conomiques} au Maroc.
+Il couvre l'ensemble du programme officiel et accompagne l'\'{e}l\`{e}ve
+du cours jusqu'aux exercices d'application.
+
+\medskip
+Le contenu math\'{e}matique --- d\'{e}finitions, th\'{e}or\`{e}mes,
+propri\'{e}t\'{e}s et m\'{e}thodes --- a \'{e}t\'{e} con\c{c}u par
+\textbf{Anass Fawzi}.
+
+\medskip
+La r\'{e}daction des exemples r\'{e}solus, des exercices d'entra\^{i}nement,
+l'organisation en chapitres et la mise en page compl\`{e}te du livre
+ont \'{e}t\'{e} assur\'{e}es par \textbf{Oussama Sassour},
+co-r\'{e}dacteur de cet ouvrage.
+
+\medskip
+Chaque chapitre suit la structure suivante :
+\begin{itemize}
+  \item \textbf{Rappels} des pr\'{e}requis indispensables
+  \item \textbf{D\'{e}finitions} rigoureuses
+  \item \textbf{Th\'{e}or\`{e}mes et propri\'{e}t\'{e}s}
+  \item \textbf{M\'{e}thodes} et techniques de r\'{e}solution
+  \item \textbf{Exemples} r\'{e}solus en d\'{e}tail
+  \item \textbf{Exercices} d'entra\^{i}nement
+\end{itemize}
+
+\newpage
+\tableofcontents
+\newpage
+
+%----------------------------------------------------------
+%  CHAPITRES
+%----------------------------------------------------------
+\input{chapitres/chapitre1_limites}
+\input{chapitres/chapitre2_derivation}
+\input{chapitres/chapitre3_etude_fonctions}
+\input{chapitres/chapitre4_suites}
+\input{chapitres/chapitre5_exp}
+\input{chapitres/chapitre6_primitive}
+\input{chapitres/chapitre7_log}
+\input{chapitres/chapitre8_integral}
+\input{chapitres/chapitre9_probabilites}
+
+%----------------------------------------------------------
+%  COMMANDES SPÉCIALES EXAMENS (lignes pointillées + boîte)
+%----------------------------------------------------------
+\newcommand{\lignerep}{%
+  \par\noindent\makebox[\linewidth]{\dotfill}\par
+}
+\newtcolorbox{exerciceBox}[2]{
+  colback=navylight, colframe=navy,
+  boxrule=1pt, arc=3pt,
+  left=8pt, right=8pt, top=5pt, bottom=5pt,
+  coltitle=white, colbacktitle=navy,
+  fonttitle=\bfseries\large,
+  title={\textit{Exercice #1 :} \hfill (#2 points)},
+  toptitle=3pt, bottomtitle=3pt
+}
+
+%----------------------------------------------------------
+%  EXAMENS BLANCS
+%----------------------------------------------------------
+ \cleardoublepage
+ \part*{Examens Blancs}
+ \addcontentsline{toc}{part}{Examens Blancs}
+
+ \input{examens/examen_blanc_1}
+ \input{examens/examen_blanc_2}
+% \input{examens/examen_blanc_3}
+
+\end{document}

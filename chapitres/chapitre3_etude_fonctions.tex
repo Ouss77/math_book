@@ -1,0 +1,511 @@
+%==========================================================
+%  CHAPITRE 3 — ÉTUDE DES FONCTIONS
+%  Graphes intégrés avec pgfplots + tikz
+%==========================================================
+
+\chapter{\'{E}tude des Fonctions}
+
+\begin{rappel}[M\'{e}thode g\'{e}n\'{e}rale d'\'{e}tude d'une fonction]
+  L'\'{e}tude compl\`{e}te d'une fonction $f$ comprend :
+  \begin{enumerate}
+    \item Domaine de d\'{e}finition $D_f$
+    \item Parit\'{e}, p\'{e}riodicit\'{e}, sym\'{e}tries
+    \item Limites aux bornes et asymptotes
+    \item D\'{e}riv\'{e}e $f'$, signe et tableau de variations
+    \item Convexit\'{e} : d\'{e}riv\'{e}e seconde $f''$ et points d'inflexion
+    \item Trac\'{e} de la courbe repr\'{e}sentative $\mathcal{C}_f$
+  \end{enumerate}
+\end{rappel}
+
+%----------------------------------------------------------
+\section{Sym\'{e}tries d'une courbe}
+%----------------------------------------------------------
+
+\subsection{Axe de sym\'{e}trie}
+
+\begin{definition}[Axe de sym\'{e}trie]
+  La droite d'\'{e}quation $x = a$ est un \textbf{axe de sym\'{e}trie}
+  de la courbe $\mathcal{C}_f$ si et seulement si :
+  \[
+    \forall x \in D_f \;:\quad (2a - x) \in D_f
+    \quad \text{et} \quad
+    f(2a - x) = f(x)
+  \]
+\end{definition}
+
+\begin{remarque}
+  Cas particulier : si $a = 0$, la condition devient $f(-x) = f(x)$,
+  ce qui signifie que $f$ est une \textbf{fonction paire}
+  (sym\'{e}trique par rapport \`{a} l'axe des ordonn\'{e}es).
+\end{remarque}
+
+\begin{exemple}[R\'{e}solu : axe de sym\'{e}trie]
+  $f(x) = x^2 - 4x + 5$.
+  On calcule $f(4 - x) = (4-x)^2 - 4(4-x) + 5 = x^2 - 4x + 5 = f(x)$.
+
+  Donc la droite $x = 2$ est un \textbf{axe de sym\'{e}trie} de $\mathcal{C}_f$.
+
+  \medskip
+  \begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines  = center,
+      xlabel      = {$x$},
+      ylabel      = {$y$},
+      xmin = -0.5, xmax = 4.5,
+      ymin = -0.5, ymax = 7,
+      xtick       = {0,1,2,3,4},
+      ytick       = {0,1,2,3,4,5,6},
+      grid        = major,
+      grid style  = {gray!20},
+      width = 9cm, height = 6cm,
+    ]
+      % Courbe f(x) = x²-4x+5
+      \addplot[navy, very thick, domain=-0.3:4.3, samples=120]
+        {x^2 - 4*x + 5};
+      \addlegendentry{$f(x)=x^2-4x+5$}
+
+      % Axe de symétrie x=2
+      \addplot[burgundy, dashed, thick]
+        coordinates {(2,-0.5)(2,7)};
+      \addlegendentry{Axe $x=2$}
+
+      % Sommet
+      \addplot[mark=*, mark size=3pt, burgundy]
+        coordinates {(2,1)};
+      \node[right, color=burgundy, font=\small] at (axis cs:2,1) {$(2,\,1)$};
+    \end{axis}
+  \end{tikzpicture}
+  \end{center}
+\end{exemple}
+
+%----------------------------------------------------------
+\subsection{Centre de sym\'{e}trie}
+%----------------------------------------------------------
+
+\begin{definition}[Centre de sym\'{e}trie]
+  Le point $I(a,\,b)$ est un \textbf{centre de sym\'{e}trie}
+  de la courbe $\mathcal{C}_f$ si et seulement si :
+  \[
+    \forall x \in D_f \;:\quad (2a - x) \in D_f
+    \quad \text{et} \quad
+    f(2a - x) + f(x) = 2b
+  \]
+\end{definition}
+
+\begin{remarque}
+  Cas particulier : si $I = (0, 0)$, la condition devient $f(-x) = -f(x)$
+  — $f$ est une \textbf{fonction impaire} (sym\'{e}trique par rapport \`{a} l'origine).
+\end{remarque}
+
+\begin{methode}[V\'{e}rifier qu'un point est centre de sym\'{e}trie]
+  \begin{enumerate}
+    \item Calculer directement $f(2a - x) + f(x)$.
+    \item Si le r\'{e}sultat vaut $2b$ (constante), alors $I(a,b)$
+          est centre de sym\'{e}trie.
+  \end{enumerate}
+\end{methode}
+
+\begin{exemple}[R\'{e}solu : centre de sym\'{e}trie]
+  $f(x) = x^3 - 3x$ sur $\R$.
+  V\'{e}rifions que $I(0,\,0)$ est centre de sym\'{e}trie.
+
+  \medskip
+  $f(-x) = -x^3 + 3x = -f(x)$,
+  donc $f(-x) + f(x) = 0 = 2\times 0$ : $I(0,0)$ est bien centre de sym\'{e}trie.
+
+  \medskip
+  \begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines  = center,
+      xlabel      = {$x$},
+      ylabel      = {$y$},
+      xmin = -2.5, xmax = 2.5,
+      ymin = -4,   ymax = 4,
+      grid        = major,
+      grid style  = {gray!20},
+      width = 9cm, height = 7cm,
+    ]
+      % Courbe f(x) = x³ - 3x
+      \addplot[navy, very thick, domain=-2.2:2.2, samples=150]
+        {x^3 - 3*x};
+      \addlegendentry{$f(x)=x^3-3x$}
+
+      % Centre de symétrie O(0,0)
+      \addplot[mark=*, mark size=4pt, burgundy]
+        coordinates {(0,0)};
+      \node[above right, color=burgundy, font=\small\bfseries]
+        at (axis cs:0,0) {$I(0,0)$};
+
+      % Deux points symétriques
+      \addplot[mark=square*, mark size=3pt, forest]
+        coordinates {(1,-2)(-1,2)};
+      \node[right, color=forest, font=\small] at (axis cs:1,-2)  {$(1,-2)$};
+      \node[left,  color=forest, font=\small] at (axis cs:-1, 2) {$(-1,2)$};
+
+      % Flèche de symétrie
+      \draw[->, forest, dashed] (axis cs:1,-2) -- (axis cs:-1,2);
+    \end{axis}
+  \end{tikzpicture}
+  \end{center}
+\end{exemple}
+
+%----------------------------------------------------------
+\section{Convexit\'{e} et point d'inflexion}
+%----------------------------------------------------------
+
+\begin{definition}[Convexit\'{e} et concavit\'{e}]
+  Soit $f$ deux fois d\'{e}rivable sur un intervalle $I$.
+  \begin{itemize}
+    \item $\mathcal{C}_f$ est \textbf{convexe} sur $I$ si elle est situ\'{e}e
+          \textbf{au-dessus} de chacune de ses tangentes :
+          \( \forall x \in I,\quad f''(x) \geq 0 \)
+    \item $\mathcal{C}_f$ est \textbf{concave} sur $I$ si elle est situ\'{e}e
+          \textbf{au-dessous} de chacune de ses tangentes :
+          \( \forall x \in I,\quad f''(x) \leq 0 \)
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Point d'inflexion]
+  Un \textbf{point d'inflexion} est un point o\`{u} $\mathcal{C}_f$
+  change de concavit\'{e}.
+
+  \medskip
+  \begin{center}
+  \renewcommand{\arraystretch}{1.8}
+  \begin{tabular}{|p{6.5cm}|p{6.5cm}|}
+    \hline
+    \textbf{\color{navy}Condition}
+      & \textbf{\color{navy}Conclusion} \\
+    \hline\hline
+    $f''(x_0) = 0$ et $f''$ \textbf{change de signe} en $x_0$
+      & $\mathcal{C}_f$ admet un \textbf{point d'inflexion} en $x_0$ \\
+    \hline
+    $f''(x_0) = 0$ mais \textbf{sans} changement de signe
+      & Pas de point d'inflexion en $x_0$ \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{definition}
+
+\begin{attention}
+  $f''(x_0) = 0$ \textbf{ne suffit pas} !
+  Il faut \textbf{obligatoirement} v\'{e}rifier le changement de signe de $f''$.
+\end{attention}
+
+\begin{methode}[\'{E}tudier la convexit\'{e} et trouver les points d'inflexion]
+  \begin{enumerate}
+    \item Calculer $f''(x)$.
+    \item \'{E}tudier le signe de $f''(x)$ sur chaque intervalle.
+    \item Les z\'{e}ros o\`{u} $f''$ change de signe $\Rightarrow$ points d'inflexion.
+    \item Calculer les coordonn\'{e}es : $\bigl(x_0,\, f(x_0)\bigr)$.
+  \end{enumerate}
+\end{methode}
+
+\begin{exemple}[R\'{e}solu : convexit\'{e} et point d'inflexion]
+  $f(x) = x^3 - 3x^2 + 2$ sur $\R$.
+
+  \medskip
+  $f'(x) = 3x^2 - 6x$ \quad et \quad $f''(x) = 6x - 6 = 6(x-1)$.
+
+  \medskip
+  \begin{center}
+  \renewcommand{\arraystretch}{1.6}
+  \begin{tabular}{|c|ccccc|}
+    \hline
+    $x$           & $-\infty$ && $1$ && $+\infty$ \\
+    \hline
+    $f''(x)$      && $-$ & $0$ & $+$ & \\
+    \hline
+    Convexit\'{e} & \multicolumn{2}{c}{Concave $\frown$}
+                  && \multicolumn{2}{c|}{Convexe $\smile$} \\
+    \hline
+  \end{tabular}
+  \end{center}
+
+  \medskip
+  $f''$ s'annule et change de signe en $x_0 = 1$.
+  Le \textbf{point d'inflexion} est $(1,\, f(1)) = (1,\, 0)$.
+
+  \medskip
+  \begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines  = center,
+      xlabel      = {$x$},
+      ylabel      = {$y$},
+      xmin = -0.8, xmax = 3.2,
+      ymin = -3,   ymax = 4,
+      xtick       = {-0,1,2,3},
+      grid        = major,
+      grid style  = {gray!20},
+      width = 10cm, height = 7cm,
+    ]
+      % Courbe f(x) = x³ - 3x² + 2
+      \addplot[navy, very thick, domain=-0.6:3.1, samples=150]
+        {x^3 - 3*x^2 + 2};
+      \addlegendentry{$f(x)=x^3-3x^2+2$}
+
+      % Tangente au point d'inflexion (1,0) : f'(1)=-3 → y=-3(x-1)
+      \addplot[burgundy, dashed, thick, domain=-0.2:2.5]
+        {-3*(x-1)};
+      \addlegendentry{Tangente au pt d'inflexion}
+
+      % Point d'inflexion
+      \addplot[mark=square*, mark size=4pt, burgundy]
+        coordinates {(1,0)};
+      \node[above right, color=burgundy, font=\small\bfseries]
+        at (axis cs:1,0) {Inflexion $(1,0)$};
+
+      % Annotation concave/convexe
+      \node[color=navy!70, font=\small\bfseries] at (axis cs:0.3,2.5)
+        {Concave $\frown$};
+      \node[color=forest, font=\small\bfseries] at (axis cs:2.5,-1.5)
+        {Convexe $\smile$};
+    \end{axis}
+  \end{tikzpicture}
+  \end{center}
+\end{exemple}
+\newpage
+\
+%----------------------------------------------------------
+\section{Branches infinies et asymptotes}
+%----------------------------------------------------------
+
+\begin{definition}[Types d'asymptotes]
+  \begin{center}
+  \renewcommand{\arraystretch}{2}
+  \begin{tabular}{|p{5.5cm}|p{7cm}|}
+    \hline
+    \textbf{\color{navy}Condition}
+      & \textbf{\color{navy}Conclusion} \\
+    \hline\hline
+    $\displaystyle\lim_{x \to a} f(x) = \pm\infty$
+      & Asymptote \textbf{verticale} $x = a$ \\
+    \hline
+    $\displaystyle\lim_{x \to \pm\infty} f(x) = b \in \R$
+      & Asymptote \textbf{horizontale} $y = b$ \\
+    \hline
+    $\displaystyle\lim_{x \to \pm\infty} \frac{f(x)}{x} = a \neq 0$
+    et $\lim [f(x)-ax] = b \in \R$
+      & Asymptote \textbf{oblique} $y = ax+b$ \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{definition}
+
+\begin{methode}[Chercher une asymptote oblique en $\pm\infty$]
+  \begin{enumerate}
+    \item Calculer $a = \displaystyle\lim_{x \to \pm\infty} \dfrac{f(x)}{x}$.
+    \item Si $a \in \R^*$, calculer $b = \displaystyle\lim_{x \to \pm\infty}[f(x) - ax]$.
+    \item Si $b \in \R$ $\Rightarrow$ asymptote oblique $y = ax+b$.
+    \item Si $b = \pm\infty$ $\Rightarrow$ branche parabolique de direction $y=ax$.
+  \end{enumerate}
+\end{methode}
+
+\begin{exemple}[R\'{e}solu : asymptotes verticale et oblique]
+  $f(x) = \dfrac{x^2}{x-1}$ sur $\R\setminus\{1\}$.
+
+  \medskip
+  \textbf{A.V. :} $\displaystyle\lim_{x\to 1} f(x) = \pm\infty$
+  $\Rightarrow$ asymptote verticale $x = 1$.
+
+  \medskip
+  \textbf{A.O. :} $a = \displaystyle\lim_{x\to+\infty}\dfrac{f(x)}{x}
+  = \lim\dfrac{x}{x-1} = 1$. \quad
+  $b = \lim[f(x)-x] = \lim\dfrac{x^2 - x(x-1)}{x-1} = \lim\dfrac{x}{x-1} = 1$.
+
+  Donc $y = x + 1$ est asymptote oblique.
+
+  \medskip
+  \begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines  = center,
+      xlabel      = {$x$},
+      ylabel      = {$y$},
+      xmin = -3, xmax = 5,
+      ymin = -6, ymax = 9,
+      grid        = major,
+      grid style  = {gray!20},
+      width = 10cm, height = 8cm,
+      restrict y to domain = -8:10,
+    ]
+      % Branche gauche
+      \addplot[navy, very thick, domain=-2.8:0.75, samples=200]
+        {x^2/(x-1)};
+
+      % Branche droite
+      \addplot[navy, very thick, domain=1.3:4.8, samples=200]
+        {x^2/(x-1)};
+      \addlegendentry{$f(x)=\dfrac{x^2}{x-1}$}
+
+      % Asymptote verticale x=1
+      \addplot[burgundy, dashed, thick]
+        coordinates {(1,-6)(1,9)};
+      \addlegendentry{A.V. : $x=1$}
+
+      % Asymptote oblique y = x+1
+      \addplot[forest, dashed, thick, domain=-3:5]
+        {x+1};
+      \addlegendentry{A.O. : $y=x+1$}
+    \end{axis}
+  \end{tikzpicture}
+  \end{center}
+\end{exemple}
+
+%----------------------------------------------------------
+\section{Fonction r\'{e}ciproque}
+%----------------------------------------------------------
+
+\begin{definition}[Fonction r\'{e}ciproque]
+  Si $f$ est \textbf{continue et strictement monotone} sur $I$,
+  alors $f$ admet une \textbf{fonction r\'{e}ciproque} $f^{-1}$
+  d\'{e}finie sur $f(I)$, v\'{e}rifiant :
+  \[
+    f^{-1}(x) = y \;\iff\; f(y) = x
+  \]
+\end{definition}
+
+\begin{propriete}[Propri\'{e}t\'{e}s de $f^{-1}$]
+  \begin{itemize}
+    \item $f^{-1}$ est \textbf{continue} sur $f(I)$.
+    \item $f^{-1}$ varie dans le \textbf{m\^{e}me sens} que $f$.
+    \item Si $f'$ ne s'annule pas sur $I$ :
+    \[
+      \bigl(f^{-1}\bigr)'(x) = \frac{1}{f'\bigl(f^{-1}(x)\bigr)}
+      \qquad \text{et} \qquad
+      \bigl(f^{-1}\bigr)'(y_0) = \frac{1}{f'(x_0)}
+      \quad \text{avec } y_0 = f(x_0)
+    \]
+  \end{itemize}
+\end{propriete}
+
+\begin{methode}[Trouver l'expression de $f^{-1}(x)$]
+  \begin{enumerate}
+    \item Poser $f(y) = x$.
+    \item \textbf{R\'{e}soudre} cette \'{e}quation en $y$.
+    \item La solution $y$ est $f^{-1}(x)$.
+  \end{enumerate}
+\end{methode}
+
+\begin{exemple}[R\'{e}solu : $f$ et $f^{-1}$ sym\'{e}triques par rapport \`{a} $y=x$]
+  $f(x) = e^x$ sur $\R$, donc $f^{-1}(x) = \ln x$ sur $]0,+\infty[$.
+
+  \medskip
+  \begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines  = center,
+      xlabel      = {$x$},
+      ylabel      = {$y$},
+      xmin = -2.5, xmax = 4,
+      ymin = -2.5, ymax = 4,
+      grid        = major,
+      grid style  = {gray!20},
+      width = 9cm, height = 9cm,
+    ]
+      % f(x) = e^x
+      \addplot[navy, very thick, domain=-2.4:1.38, samples=120]
+        {exp(x)};
+      \addlegendentry{$f(x)=e^x$}
+
+      % f⁻¹(x) = ln(x)
+      \addplot[forest, very thick, domain=0.09:4, samples=120]
+        {ln(x)};
+      \addlegendentry{$f^{-1}(x)=\ln x$}
+
+      % Première bissectrice y = x
+      \addplot[burgundy, dashed, thick, domain=-2:4]
+        {x};
+      \addlegendentry{Bissectrice $y=x$}
+
+      % Point commun (0,1) et (1,0)
+      \addplot[mark=*, mark size=3pt, navy]
+        coordinates {(0,1)};
+      \node[left, font=\small, navy] at (axis cs:0,1) {$(0,1)$};
+
+      \addplot[mark=*, mark size=3pt, forest]
+        coordinates {(1,0)};
+      \node[below, font=\small, forest] at (axis cs:1,0) {$(1,0)$};
+    \end{axis}
+  \end{tikzpicture}
+  \end{center}
+\end{exemple}
+
+\begin{propriete}[Correspondance des asymptotes entre $f$ et $f^{-1}$]
+  \begin{center}
+  \renewcommand{\arraystretch}{1.8}
+  \begin{tabular}{|p{5.5cm}|p{5.5cm}|}
+    \hline
+    \textbf{\color{navy}$\mathcal{C}_f$ admet\ldots}
+      & \textbf{\color{navy}$\mathcal{C}_{f^{-1}}$ admet\ldots} \\
+    \hline\hline
+    A. verticale $x = a$     & A. horizontale $y = a$ \\
+    \hline
+    A. horizontale $y = a$   & A. verticale $x = a$ \\
+    \hline
+    A. oblique $y = ax + b$  & A. oblique $y = \dfrac{1}{a}x - \dfrac{b}{a}$ \\
+    \hline
+    Tangente verticale       & Tangente horizontale \\
+    \hline
+    Tangente horizontale     & Tangente verticale \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{propriete}
+
+\newpage
+%----------------------------------------------------------
+\section*{Exercices du chapitre}
+\addcontentsline{toc}{section}{Exercices : \'{E}tude des fonctions}
+%----------------------------------------------------------
+
+\begin{exercice}[1 : Sym\'{e}tries]
+  Pour chaque fonction, d\'{e}terminer si la courbe poss\`{e}de
+  un axe ou un centre de sym\'{e}trie :
+  \begin{enumerate}
+    \item $f(x) = x^4 - 2x^2 + 1$
+    \item $f(x) = x^3 - 3x$
+    \item $f(x) = \dfrac{1}{x-2} + 3$
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[2 : Convexit\'{e} et points d'inflexion]
+  \'{E}tudier la convexit\'{e} et d\'{e}terminer les \'{e}ventuels points d'inflexion :
+  \begin{enumerate}
+    \item $f(x) = x^3 - 6x^2 + 9x$ sur $\R$
+    \item $f(x) = e^x - x$ sur $\R$
+    \item $f(x) = \ln x$ sur $]0,+\infty[$
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[3 : Asymptotes]
+  \'{E}tudier les branches infinies de :
+  \begin{enumerate}
+    \item $f(x) = \dfrac{x^2-1}{x+1}$ \quad (asymptote oblique ?)
+    \item $f(x) = \dfrac{2x}{x-3}$ \quad (asymptotes verticale et horizontale)
+    \item $f(x) = x + \sqrt{x^2+1}$ \quad (asymptote oblique en $\pm\infty$)
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[4 : Fonction r\'{e}ciproque]
+  D\'{e}terminer $f^{-1}$ et son domaine :
+  \begin{enumerate}
+    \item $f(x) = 3x - 5$ sur $\R$
+    \item $f(x) = x^2 + 1$ sur $[0,+\infty[$
+    \item $f(x) = e^{x+1}$ sur $\R$
+    \item $f(x) = \dfrac{x+1}{x-1}$ sur $]1,+\infty[$
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[5 : \'{E}tude compl\`{e}te avec trac\'{e}]
+  Soit $f(x) = \dfrac{x^2}{x-1}$ sur $\R\setminus\{1\}$.
+  \begin{enumerate}
+    \item Limites aux bornes et asymptotes.
+    \item $f'(x)$, signe et tableau de variations.
+    \item $f''(x)$, convexit\'{e} et point d'inflexion.
+    \item Tracer $\mathcal{C}_f$ avec ses asymptotes.
+  \end{enumerate}
+\end{exercice}

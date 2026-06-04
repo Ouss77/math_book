@@ -1,0 +1,186 @@
+% !TEX root = ../main.tex
+%==========================================================
+%  EXAMEN BLANC N°2 — VERSION COMPACTE (LIVRE)
+%==========================================================
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Examen Blanc N\textsuperscript{o}2}
+\thispagestyle{empty}
+
+%----------------------------------------------------------
+%  TITRE
+%----------------------------------------------------------
+\begin{center}
+  {\LARGE\bfseries\color{navy} Examen Blanc N\textsuperscript{o}2}\\[0.3cm]
+  {\large\bfseries Math\'{e}matiques \textemdash{} Bac Sciences \'{E}conomiques \textemdash{} Session 2026}
+\end{center}
+
+\smallskip
+{\small Version compacte professionnelle adapt\'{e}e pour un livre de pr\'{e}paration au baccalaur\'{e}at.}
+\smallskip
+
+%----------------------------------------------------------
+%  TABLEAU DES COMPOSANTES
+%----------------------------------------------------------
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|l|c|}
+  \hline
+  \rowcolor{navylight}
+  \textbf{\color{navy}Exercice} & \multicolumn{1}{c|}{\textbf{\color{navy}Th\`{e}me}} & \textbf{\color{navy}Points} \\
+  \hline
+  1 & Suites num\'{e}riques & 4 \\
+  \hline
+  2 & Probabilit\'{e}s & 1,5 \\
+  \hline
+  3 & Probabilit\'{e}s & 2,5 \\
+  \hline
+  4 & \'{E}tude graphique & 4,75 \\
+  \hline
+  5 & Fonction et int\'{e}grale & 7,25 \\
+  \hline
+\end{tabular}
+\end{center}
+
+\bigskip
+
+%==========================================================
+%  EXERCICE 1 — SUITES NUMÉRIQUES  (4 pts)
+%==========================================================
+\noindent\textbf{Exercice 1 :}\\
+Soit $(u_n)$ une suite num\'{e}rique d\'{e}finie par :
+\[
+  u_0 = 1 \qquad \text{et} \qquad
+  u_{n+1} = \frac{3u_n + 2}{u_n + 2}
+  \quad \text{pour tout } n \in \N
+\]
+
+\begin{enumerate}[leftmargin=1.5em, label=\textbf{\arabic*)}, itemsep=2pt, topsep=4pt]
+  \item Calculer $u_1$ et $u_2$.
+  \item Montrer par r\'{e}currence que $1 \leq u_n \leq 2$ pour tout $n \in \N$.
+  \item
+    \begin{enumerate}[label=\textbf{\alph*)}, itemsep=1pt, topsep=1pt]
+      \item V\'{e}rifier que $u_{n+1} - 2 = \dfrac{u_n - 2}{u_n + 2}$ pour tout $n \in \N$.
+      \item Montrer que $u_{n+1} - u_n = \dfrac{-(u_n - 2)(u_n + 1)}{u_n + 2}$,
+            puis d\'{e}duire que $(u_n)$ est croissante.
+      \item En d\'{e}duire que $(u_n)$ est convergente.
+    \end{enumerate}
+  \item On consid\`{e}re $(v_n)$ d\'{e}finie par $v_n = \dfrac{u_n - 2}{u_n + 1}$ pour tout $n \in \N$.
+    \begin{enumerate}[label=\textbf{\alph*)}, itemsep=1pt, topsep=1pt]
+      \item Montrer que $(v_n)$ est une suite g\'{e}om\'{e}trique de raison $\dfrac{1}{4}$.
+      \item D\'{e}terminer $v_n$ en fonction de $n$, puis $u_n$ en fonction de $n$.
+      \item Calculer $\displaystyle\lim_{n \to +\infty} u_n$.
+      \item Calculer $S_n = v_0 + v_1 + \cdots + v_n$ en fonction de $n$.
+    \end{enumerate}
+\end{enumerate}
+
+\medskip
+
+%==========================================================
+%  EXERCICE 2 — PROBABILITÉS  (1,5 pts)
+%==========================================================
+\noindent\textbf{Exercice 2 :}\\
+Soit $X$ une variable al\'{e}atoire dont la loi de probabilit\'{e} est :
+
+\medskip
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  \rowcolor{navylight}
+  \textbf{\color{navy}$k$} & $-1$ & $0$ & $2$ \\
+  \hline
+  \textbf{\color{navy}$p(X=k)$} & $2a$ & $a$ & $3a$ \\
+  \hline
+\end{tabular}
+\end{center}
+\medskip
+
+\begin{enumerate}[leftmargin=1.5em, label=\textbf{\arabic*.}, itemsep=2pt, topsep=4pt]
+  \item D\'{e}terminer $a$.
+  \item Calculer $E(X)$ et $V(X)$.
+\end{enumerate}
+
+\medskip
+
+%==========================================================
+%  EXERCICE 3 — PROBABILITÉS  (2,5 pts)
+%==========================================================
+\noindent\textbf{Exercice 3 :}\\
+Une urne contient 4 boules rouges num\'{e}rot\'{e}es $1;1;2;2$
+et 5 boules vertes num\'{e}rot\'{e}es $1;2;2;2;3$.
+On tire simultan\'{e}ment 3 boules. On pose :
+\begin{itemize}[itemsep=0pt, topsep=2pt, leftmargin=2em]
+  \item $A$ : \guillemotleft{} les 3 boules tir\'{e}es sont de m\^{e}me couleur \guillemotright{}
+  \item $B$ : \guillemotleft{} les 3 boules tir\'{e}es portent le m\^{e}me num\'{e}ro \guillemotright{}
+\end{itemize}
+
+\begin{enumerate}[leftmargin=1.5em, label=\textbf{\arabic*.}, itemsep=2pt, topsep=4pt]
+  \item Calculer $p(A)$, $p(B)$ puis montrer que $p(A \cap B) = \dfrac{1}{84}$.
+  \item Les \'{e}v\'{e}nements $A$ et $B$ sont-ils ind\'{e}pendants ?
+  \item Sachant que les boules tir\'{e}es sont de m\^{e}me couleur,
+        calculer la probabilit\'{e} qu'elles portent le m\^{e}me num\'{e}ro.
+\end{enumerate}
+
+\medskip
+
+%==========================================================
+%  EXERCICE 4 — ÉTUDE GRAPHIQUE  (4,75 pts)
+%==========================================================
+\noindent\textbf{Exercice 4 :}\\
+On consid\`{e}re la fonction $f$ d\'{e}finie par sa courbe repr\'{e}sentative $(\mathcal{C})$
+dans un rep\`{e}re orthonorm\'{e}, avec une asymptote verticale $x = 2$
+et une asymptote oblique $y = \dfrac{2x+3}{3}$.\\
+R\'{e}pondre graphiquement aux questions suivantes :
+
+\begin{enumerate}[leftmargin=1.5em, label=\textbf{\arabic*.}, itemsep=2pt, topsep=4pt]
+  \item D\'{e}terminer le domaine de d\'{e}finition de $f$.
+  \item D\'{e}terminer le signe de $f$ sur son domaine.
+  \item
+    \begin{enumerate}[label=\textbf{\alph*.}, itemsep=1pt, topsep=1pt]
+      \item D\'{e}terminer $\displaystyle\lim_{x \to +\infty} f(x)$
+            et $\displaystyle\lim_{x \to 2^+} f(x)$.
+      \item D\'{e}terminer les branches infinies de $(\mathcal{C})$.
+    \end{enumerate}
+\end{enumerate}
+
+\newpage
+
+%==========================================================
+%  EXERCICE 5 — ÉTUDE DE FONCTION  (7,25 pts)
+%==========================================================
+\noindent\textbf{Exercice 5 :}\\
+Soit $g$ la fonction d\'{e}finie sur $\R$ par $g(x) = (x+2)^2\,e^{-x}$.
+Soit $(\mathcal{C}_g)$ sa courbe repr\'{e}sentative dans un rep\`{e}re
+orthonorm\'{e} $(O;\,\vec{i};\,\vec{j})$, avec $\|\vec{i}\| = 1\,\text{cm}$.
+
+\begin{enumerate}[leftmargin=1.5em, label=\textbf{\arabic*.}, itemsep=2pt, topsep=4pt]
+  \item Calculer $\displaystyle\lim_{x \to +\infty} g(x)$ et donner une
+        interpr\'{e}tation g\'{e}om\'{e}trique.
+  \item V\'{e}rifier que $g(x) = x^2\,e^{-x}\!\left(1 + \dfrac{2}{x}\right)^2$
+        pour tout $x \neq 0$, puis calculer $\displaystyle\lim_{x \to -\infty} g(x)$
+        et $\displaystyle\lim_{x \to -\infty} \dfrac{g(x)}{x^2}$.
+        Donner une interpr\'{e}tation g\'{e}om\'{e}trique.
+  \item
+    \begin{enumerate}[label=\textbf{\alph*.}, itemsep=1pt, topsep=1pt]
+      \item Montrer que $\forall x \in \R$ :
+            $g'(x) = -x(x+2)\,e^{-x}$.
+      \item Dresser le tableau de variations de $g$ sur $\R$.
+    \end{enumerate}
+  \item D\'{e}terminer l'\'{e}quation de la tangente $(T)$ \`{a}
+        $(\mathcal{C}_g)$ au point d'abscisse $0$.
+  \item Montrer que la fonction $G : x \mapsto -(x^2 + 6x + 10)\,e^{-x}$
+        est une primitive de $g$ sur $\R$.
+  \item Calculer l'aire (en cm\textsuperscript{2}) du domaine plan d\'{e}limit\'{e}
+        par $(\mathcal{C}_g)$, l'axe des abscisses et les droites
+        $x = -2$ et $x = 1$.
+  \item Montrer que $g(x) \leq 4$ pour tout $x \in [-2\,;\,+\infty[$.
+        En d\'{e}duire la position de $(\mathcal{C}_g)$ par rapport
+        \`{a} la tangente $(T)$ sur cet intervalle.
+\end{enumerate}
+
+\begin{center}
+  \color{charcoal}\rule{5cm}{0.4pt}\\[3pt]
+  \textit{--- Fin du sujet ---}\\
+  \rule{5cm}{0.4pt}
+\end{center}

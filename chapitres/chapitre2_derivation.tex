@@ -1,0 +1,392 @@
+%==========================================================
+%  CHAPITRE 2 — DÉRIVABILITÉ
+%==========================================================
+
+\chapter{D\'{e}rivabilit\'{e}}
+
+\begin{rappel}[Taux de variation]
+  Le \textbf{taux de variation} de $f$ entre $x_0$ et $x$ est :
+  \[
+    \tau = \frac{f(x) - f(x_0)}{x - x_0}
+  \]
+  Il repr\'{e}sente le coefficient directeur de la droite passant par
+  les points $\bigl(x_0,\,f(x_0)\bigr)$ et $\bigl(x,\,f(x)\bigr)$.
+\end{rappel}
+
+%----------------------------------------------------------
+\section{D\'{e}rivabilit\'{e} en un point}
+%----------------------------------------------------------
+
+\begin{definition}[Fonction d\'{e}rivable en un point]
+  On dit que $f$ est \textbf{d\'{e}rivable en $x_0$} si la limite suivante
+  existe et est finie :
+  \[
+    \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}
+  \]
+  Cette limite est appel\'{e}e le \textbf{nombre d\'{e}riv\'{e}} de $f$ en $x_0$,
+  not\'{e} $f'(x_0)$.
+\end{definition}
+
+\begin{remarque}
+  \newline
+  On peut aussi \'{e}crire : $f'(x_0) = \displaystyle\lim_{h \to 0}
+  \dfrac{f(x_0 + h) - f(x_0)}{h}$ \; en posant $h = x - x_0$.
+\end{remarque}
+
+%----------------------------------------------------------
+\subsection{D\'{e}rivabilit\'{e} \`{a} droite et \`{a} gauche}
+%----------------------------------------------------------
+
+\begin{definition}[D\'{e}rivabilit\'{e} \`{a} droite et \`{a} gauche]
+  \begin{itemize}
+    \item $f$ est \textbf{d\'{e}rivable \`{a} droite} en $x_0$ si :
+    \[
+      \lim_{\substack{x \to x_0 \\ x > x_0}}
+      \frac{f(x)-f(x_0)}{x-x_0} \text{ existe et est finie}
+    \]
+    Cette limite est not\'{e}e $f'_d(x_0)$.
+
+    \medskip
+    \item $f$ est \textbf{d\'{e}rivable \`{a} gauche} en $x_0$ si :
+    \[
+      \lim_{\substack{x \to x_0 \\ x < x_0}}
+      \frac{f(x)-f(x_0)}{x-x_0} \text{ existe et est finie}
+    \]
+    Cette limite est not\'{e}e $f'_g(x_0)$.
+  \end{itemize}
+\end{definition}
+
+\begin{propriete}[Condition de d\'{e}rivabilit\'{e}]
+  $f$ est d\'{e}rivable en $x_0$ \textbf{si et seulement si} :
+  \[
+    f \text{ est d\'{e}rivable \`{a} droite et \`{a} gauche en } x_0
+    \quad \text{et} \quad
+    f'_d(x_0) = f'_g(x_0)
+  \]
+\end{propriete}
+
+%----------------------------------------------------------
+\section{Tangente et interpr\'{e}tation g\'{e}om\'{e}trique}
+%----------------------------------------------------------
+
+\begin{definition}[\'{E}quation de la tangente]
+  Soit $f$ d\'{e}rivable en $x_0$. L'\'{e}quation de la \textbf{tangente}
+  \`{a} la courbe $\mathcal{C}_f$ au point d'abscisse $x_0$ est :
+  \[
+    \boxed{y = f'(x_0)(x - x_0) + f(x_0)}
+  \]
+\end{definition}
+
+\begin{exemple}[R\'{e}solu]
+  Soit $f(x) = x^2$. Trouver la tangente en $x_0 = 1$.
+
+  \medskip
+  $f'(x) = 2x$ donc $f'(1) = 2$ et $f(1) = 1$.
+
+  L'\'{e}quation de la tangente : $y = 2(x-1) + 1 = 2x - 1$.
+\end{exemple}
+\newpage
+\begin{propriete}[Interpr\'{e}tation g\'{e}om\'{e}trique compl\`{e}te]
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{2}
+  \begin{tabular}{|p{5cm}|p{8cm}|}
+    \hline
+    \textbf{\color{navy}Situation}
+      & \textbf{\color{navy}Interpr\'{e}tation g\'{e}om\'{e}trique} \\
+    \hline\hline
+    $f'(x_0) = a \in \R$
+      & Tangente au point $A(x_0;\,f(x_0))$, coeff. directeur $a$ \\
+    \hline
+    $f'(x_0) = 0$
+      & Tangente \textbf{horizontale} au point $A$ \\
+    \hline
+    $f'_d(x_0) = a$
+      & Demi-tangente \`{a} droite, coeff. directeur $a$ \\
+    \hline
+    $f'_d(x_0) = 0$
+      & Demi-tangente \textbf{horizontale} \`{a} droite \\
+    \hline
+    $f'_d(x_0) = +\infty$ ou $-\infty$
+      & Demi-tangente \textbf{verticale} \`{a} droite, $f$ \textbf{non d\'{e}rivable} \`{a} droite \\
+    \hline
+    $f'_g(x_0) = a$
+      & Demi-tangente \`{a} gauche, coeff. directeur $a$ \\
+    \hline
+    $f'_g(x_0) = 0$
+      & Demi-tangente \textbf{horizontale} \`{a} gauche \\
+    \hline
+    $f'_g(x_0) = +\infty$ ou $-\infty$
+      & Demi-tangente \textbf{verticale} \`{a} gauche, $f$ \textbf{non d\'{e}rivable} \`{a} gauche \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{propriete}
+
+%----------------------------------------------------------
+\section{D\'{e}rivabilit\'{e} et continuit\'{e}}
+%----------------------------------------------------------
+
+\begin{theoreme}[D\'{e}rivabilit\'{e} $\Rightarrow$ Continuit\'{e}]
+  Si $f$ est d\'{e}rivable en $x_0$, alors $f$ est \textbf{continue} en $x_0$.
+
+  \medskip
+  \textbf{Attention :} La r\'{e}ciproque est \textbf{fausse} !
+  Une fonction peut \^{e}tre continue en $x_0$ sans y \^{e}tre d\'{e}rivable.
+\end{theoreme}
+
+\begin{attention}
+  $f$ continue en $x_0$ \textbf{n'implique pas} $f$ d\'{e}rivable en $x_0$.\\[4pt]
+  Contre-exemple : $f(x) = |x|$ est continue en $0$ mais \textbf{non d\'{e}rivable} en $0$
+  car $f'_d(0) = 1 \neq -1 = f'_g(0)$.
+\end{attention}
+
+%----------------------------------------------------------
+\newpage
+\section{D\'{e}riv\'{e}es des fonctions usuelles}
+%----------------------------------------------------------
+
+\begin{propriete}[Tableau des d\'{e}riv\'{e}es usuelles]
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{2.2}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{\color{forest}Fonction $f(x)$}
+      & \textbf{\color{forest}D\'{e}riv\'{e}e $f'(x)$}
+      & \textbf{\color{forest}Domaine} \\
+    \hline\hline
+    $k$ (constante)     & $0$                        & $\R$ \\
+    \hline
+    $x$                 & $1$                        & $\R$ \\
+    \hline
+    $x^n$ \; ($n \in \N^*$) & $nx^{n-1}$            & $\R$ \\
+    \hline
+    $x^r$ \; ($r \in \R$)   & $rx^{r-1}$            & $]0,+\infty[$ \\
+    \hline
+    $\dfrac{1}{x}$      & $-\dfrac{1}{x^2}$          & $\R^*$ \\
+    \hline
+    $\sqrt{x}$          & $\dfrac{1}{2\sqrt{x}}$     & $]0,+\infty[$ \\
+    \hline
+    $e^x$               & $e^x$                      & $\R$ \\
+    \hline
+    $\ln x$             & $\dfrac{1}{x}$             & $]0,+\infty[$ \\
+    \hline
+    $\sin x$            & $\cos x$                   & $\R$ \\
+    \hline
+    $\cos x$            & $-\sin x$                  & $\R$ \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{propriete}
+
+%----------------------------------------------------------
+\newpage
+\section{Op\'{e}rations sur les d\'{e}riv\'{e}es}
+%----------------------------------------------------------
+
+\begin{propriete}[R\`{e}gles de calcul]
+  Soient $u$ et $v$ deux fonctions d\'{e}rivables et $k \in \R$.
+
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{2.2}
+  \begin{tabular}{|c|c|}
+    \hline
+    \textbf{\color{navy}Fonction}
+      & \textbf{\color{navy}D\'{e}riv\'{e}e} \\
+    \hline\hline
+    $u + v$              & $u' + v'$ \\
+    \hline
+    $ku$                 & $ku'$ \\
+    \hline
+    $u \times v$         & $u'v + uv'$ \\
+    \hline
+    $\dfrac{u}{v}$       & $\dfrac{u'v - uv'}{v^2}$ \quad ($v \neq 0$) \\
+    \hline
+    $\dfrac{1}{v}$       & $-\dfrac{v'}{v^2}$ \quad ($v \neq 0$) \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{propriete}
+
+\begin{propriete}[D\'{e}riv\'{e}e d'une fonction compos\'{e}e $u^n$]
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{2.2}
+  \begin{tabular}{|c|c|}
+    \hline
+    \textbf{\color{navy}Fonction compos\'{e}e}
+      & \textbf{\color{navy}D\'{e}riv\'{e}e} \\
+    \hline\hline
+    $u^n$ \; ($n \in \Z$)    & $nu'u^{n-1}$ \\
+    \hline
+    $\sqrt{u}$               & $\dfrac{u'}{2\sqrt{u}}$ \\
+    \hline
+    $e^u$                    & $u'e^u$ \\
+    \hline
+    $\ln u$                  & $\dfrac{u'}{u}$ \\
+    \hline
+    $\sin u$                 & $u'\cos u$ \\
+    \hline
+    $\cos u$                 & $-u'\sin u$ \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{propriete}
+
+\newpage
+\begin{exemple}[R\'{e}solus : op\'{e}rations sur les d\'{e}riv\'{e}es]
+  \begin{itemize}
+    \item $f(x) = (3x^2 - 1)^4$
+    \quad $\Rightarrow$ \quad $u = 3x^2-1$, $u' = 6x$
+    \quad $\Rightarrow$ \quad $f'(x) = 4 \cdot 6x \cdot (3x^2-1)^3 = 24x(3x^2-1)^3$
+
+    \medskip
+    \item $f(x) = \dfrac{x+1}{x-1}$
+    \quad $\Rightarrow$ \quad $u=x+1$, $v=x-1$
+    \quad $\Rightarrow$ \quad $f'(x) = \dfrac{1\cdot(x-1) - (x+1)\cdot1}{(x-1)^2} = \dfrac{-2}{(x-1)^2}$
+
+    \medskip
+    \item $f(x) = \sqrt{2x+3}$
+    \quad $\Rightarrow$ \quad $u = 2x+3$, $u' = 2$
+    \quad $\Rightarrow$ \quad $f'(x) = \dfrac{2}{2\sqrt{2x+3}} = \dfrac{1}{\sqrt{2x+3}}$
+  \end{itemize}
+\end{exemple}
+
+%----------------------------------------------------------
+\section{D\'{e}riv\'{e}e et sens de variation}
+%----------------------------------------------------------
+
+\begin{theoreme}[Lien entre $f'$ et les variations de $f$]
+  Soit $f$ une fonction d\'{e}rivable sur un intervalle $I$.
+
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{1.8}
+  \begin{tabular}{|c|c|}
+    \hline
+    \textbf{\color{navy}Signe de $f'(x)$ sur $I$}
+      & \textbf{\color{navy}Variation de $f$ sur $I$} \\
+    \hline\hline
+    $f'(x) > 0$ pour tout $x \in I$ & $f$ est \textbf{strictement croissante} \\
+    \hline
+    $f'(x) < 0$ pour tout $x \in I$ & $f$ est \textbf{strictement d\'{e}croissante} \\
+    \hline
+    $f'(x) = 0$ pour tout $x \in I$ & $f$ est \textbf{constante} \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{theoreme}
+
+\begin{remarque}
+  Si $f'(x_0) = 0$ et que $f'$ change de signe en $x_0$,
+  alors $f$ admet un \textbf{extremum local} en $x_0$
+  (maximum si $f'$ passe de $+$ \`{a} $-$, minimum si $f'$ passe de $-$ \`{a} $+$).
+\end{remarque}
+
+\begin{methode}[\'{E}tudier les variations d'une fonction]
+  \begin{enumerate}
+    \item D\'{e}terminer le \textbf{domaine de d\'{e}finition} $D_f$.
+    \item Calculer $f'(x)$.
+    \item \'{E}tudier le \textbf{signe de $f'(x)$} sur $D_f$.
+    \item Dresser le \textbf{tableau de variations} de $f$.
+  \end{enumerate}
+\end{methode}
+
+\begin{exemple}[R\'{e}solu : tableau de variations]
+  Soit $f(x) = x^3 - 3x + 2$ d\'{e}finie sur $\R$.
+
+  \medskip
+  $f'(x) = 3x^2 - 3 = 3(x^2-1) = 3(x-1)(x+1)$
+
+  \medskip
+  \begin{center}
+  \renewcommand{\arraystretch}{1.8}
+  \begin{tabular}{|c|ccccccc|}
+    \hline
+    $x$ & $-\infty$ && $-1$ && $1$ && $+\infty$ \\
+    \hline
+    $f'(x)$ && $+$ & $0$ & $-$ & $0$ & $+$ & \\
+    \hline
+    $f(x)$ & $\nearrow$ && $4$ & $\searrow$ & $0$ & $\nearrow$ & \\
+    \hline
+  \end{tabular}
+  \end{center}
+
+  \medskip
+  $f$ admet un \textbf{maximum local} de $4$ en $x = -1$
+  et un \textbf{minimum local} de $0$ en $x = 1$.
+\end{exemple}
+
+%----------------------------------------------------------
+\section*{Exercices du chapitre}
+\addcontentsline{toc}{section}{Exercices : D\'{e}rivabilit\'{e}}
+%----------------------------------------------------------
+
+\begin{exercice}[1 : Nombre d\'{e}riv\'{e} par la d\'{e}finition]
+  En utilisant la d\'{e}finition $f'(x_0) = \displaystyle\lim_{x \to x_0}
+  \dfrac{f(x)-f(x_0)}{x-x_0}$, calculer le nombre d\'{e}riv\'{e} de :
+  \begin{multicols}{2}
+  \begin{enumerate}
+    \item $f(x) = x^2 - 3x$ en $x_0 = 2$
+    \item $f(x) = \sqrt{x}$ en $x_0 = 4$
+    \item $f(x) = \dfrac{1}{x}$ en $x_0 = 1$
+    \item $f(x) = x^3$ en $x_0 = -1$
+  \end{enumerate}
+  \end{multicols}
+\end{exercice}
+
+\begin{exercice}[2 : \'{E}quation de la tangente]
+  Pour chaque fonction, \'{e}crire l'\'{e}quation de la tangente
+  \`{a} la courbe $\mathcal{C}_f$ au point indiqu\'{e} :
+  \begin{enumerate}
+    \item $f(x) = x^2 + 1$ \quad au point d'abscisse $x_0 = 2$
+    \item $f(x) = \sqrt{x}$ \quad au point d'abscisse $x_0 = 9$
+    \item $f(x) = e^x$ \quad au point d'abscisse $x_0 = 0$
+    \item $f(x) = \ln x$ \quad au point d'abscisse $x_0 = 1$
+  \end{enumerate}
+\end{exercice}
+\newpage
+\begin{exercice}[3 : Calcul de d\'{e}riv\'{e}es]
+  Calculer la d\'{e}riv\'{e}e des fonctions suivantes :
+  \begin{multicols}{2}
+  \begin{enumerate}
+    \item $f(x) = 3x^4 - 2x^2 + 5$
+    \item $f(x) = (2x+1)^5$
+    \item $f(x) = \dfrac{x-1}{x+2}$
+    \item $f(x) = \sqrt{x^2+1}$
+    \item $f(x) = x^2\,e^x$
+    \item $f(x) = \ln(3x-1)$
+    \item $f(x) = \dfrac{1}{(x+1)^3}$
+    \item $f(x) = e^{x^2-1}$
+  \end{enumerate}
+  \end{multicols}
+\end{exercice}
+
+\begin{exercice}[4 : \'{E}tude de variations]
+  Pour chacune des fonctions suivantes, calculer $f'(x)$,
+  \'{e}tudier son signe et dresser le tableau de variations :
+  \begin{enumerate}
+    \item $f(x) = 2x^3 - 9x^2 + 12x - 4$ sur $\R$
+    \item $f(x) = \dfrac{x^2 - 1}{x^2 + 1}$ sur $\R$
+    \item $f(x) = x - 2\sqrt{x}$ sur $[0, +\infty[$
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[5 : D\'{e}rivabilit\'{e} en un point]
+  Soit $f(x) = \begin{cases} x^2 & \text{si } x \leq 1 \\ 2x-1 & \text{si } x > 1 \end{cases}$
+
+  \medskip
+  \begin{enumerate}
+    \item V\'{e}rifier que $f$ est continue en $x_0 = 1$.
+    \item \'{E}tudier la d\'{e}rivabilit\'{e} de $f$ en $x_0 = 1$
+          en calculant $f'_d(1)$ et $f'_g(1)$.
+    \item Quelle est l'interpr\'{e}tation g\'{e}om\'{e}trique ?
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[6 : Tangente horizontale]
+  Trouver les points de la courbe de $f(x) = x^3 - 6x^2 + 9x + 1$
+  en lesquels la tangente est horizontale.
+\end{exercice}

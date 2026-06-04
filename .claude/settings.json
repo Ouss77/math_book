@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -n \"\\\\\\\\\\\\\\\\subsection\\\\|\\\\\\\\\\\\\\\\section\\\\|\\\\\\\\\\\\\\\\chapter\" chapitres/chapitre1_limites.tex)",
+      "Bash(grep -n \"\\\\\\\\\\\\\\\\{.*infty\\\\|{-\\\\\\\\\\\\\\\\infty\\\\|{+\\\\\\\\\\\\\\\\infty\\\\|\\\\\\\\\\\\\\\\{-\\\\\\\\\\\\\\\\infty\\\\|\\\\\\\\\\\\\\\\{.*\\\\\\\\\\\\\\\\infty\" chapitres/*.tex)",
+      "Bash(grep -n \"\\\\\\\\\\\\\\\\to 0}\" chapitres/*.tex)",
+      "Bash(grep -n \"\\\\\\\\\\\\\\\\{.*infty.*\\\\\\\\\\\\\\\\}\\\\|\\\\\\\\\\\\\\\\{-\\\\\\\\\\\\\\\\infty\\\\|\\\\\\\\\\\\\\\\{+\\\\\\\\\\\\\\\\infty\\\\|\\\\\\\\\\\\\\\\{\\\\\\\\\\\\\\\\pm\" chapitres/*.tex)",
+      "Bash(grep -n \"= 0\\\\b\\\\|= 0$\\\\|= 0 \\\\\\\\\" chapitres/*.tex)",
+      "Bash(grep -v \"^%\\\\|_0\\\\|x_0\\\\|h_0\\\\|n_0\\\\|x=0\\\\|f\\(0\\\\|u_0\\\\|=0,\\\\|f_0\\\\|g_0\\\\|y=0\\\\|{0}\")",
+      "Bash(grep -n \"---\" chapitres/chapitre6_primitive.tex chapitres/chapitre8_integral.tex chapitres/chapitre9_probabilites.tex)",
+      "Bash(grep -n \"---\" main.tex chapitres/chapitre6_primitive.tex chapitres/chapitre7_log.tex)",
+      "Bash(grep -rn \"---\" chapitres/)",
+      "Bash(grep -v \"\\\\\\\\\\\\\\\\draw\\\\|\\\\\\\\\\\\\\\\path\")",
+      "Bash(grep -n \"\\\\\\\\\\\\\\\\item\\\\[\" chapitres/*.tex)",
+      "Bash(grep -n \"\\\\\\\\\\\\\\\\renewcommand.*labelitem\\\\|\\\\\\\\\\\\\\\\setlist\\\\|label=\" chapitres/*.tex main.tex)",
+      "Bash(pdflatex -interaction=nonstopmode chapitre1_export.tex)",
+      "Bash(sed 's/chapitre1_limites/chapitre2_derivation/g' chapitre1_export.tex)",
+      "Bash(pdflatex -interaction=nonstopmode chapitre2_export.tex)",
+      "Bash(sed 's/chapitre1_limites/chapitre3_etude_fonctions/g' chapitre1_export.tex)",
+      "Bash(pdflatex -interaction=nonstopmode chapitre3_export.tex)",
+      "Bash(pdflatex -interaction=nonstopmode examen_blanc_1.tex)",
+      "Bash(Select-String -Pattern \"error|Error|Warning|warning|undefined|Undefined|missing|Missing|!\")",
+      "Bash(Select-Object -First 40)",
+      "PowerShell(Set-Location \"c:\\\\Users\\\\sousou\\\\Desktop\\\\Book_Maths_Bac_Eco\\\\examens\"; $result = pdflatex -interaction=nonstopmode examen_blanc_1.tex 2>&1; $result | Select-String -Pattern \"^!|Error|error|undefined|Undefined|Warning\" | Select-Object -First 30; Write-Host \"EXIT: $LASTEXITCODE\")",
+      "Bash(find \"/c/Users/sousou/Desktop\" -name \"*.tex\" 2>/dev/null | head -20)",
+      "Read(//c/Users/sousou/Desktop/**)",
+      "PowerShell($out = pdflatex -interaction=nonstopmode -output-directory \"c:\\\\Users\\\\sousou\\\\Desktop\\\\Book_Maths_Bac_Eco\\\\examens\" \"c:\\\\Users\\\\sousou\\\\Desktop\\\\Book_Maths_Bac_Eco\\\\examens\\\\examen_blanc_1.tex\" 2>&1; Write-Host \"EXIT: $LASTEXITCODE\"; $out | Select-String -Pattern \"^!|Error|error\" | Select-Object -First 30)",
+      "PowerShell($out = pdflatex -interaction=nonstopmode -output-directory \"c:\\\\Users\\\\sousou\\\\Desktop\\\\Book_Maths_Bac_Eco\\\\examens\" \"c:\\\\Users\\\\sousou\\\\Desktop\\\\Book_Maths_Bac_Eco\\\\examens\\\\examen_blanc_1.tex\" 2>&1; Write-Host \"EXIT: $LASTEXITCODE\"; $out | Select-String -Pattern \"^!|Error\" | Select-Object -First 10)",
+      "PowerShell($out = pdflatex -interaction=nonstopmode -output-directory \"c:\\\\Users\\\\sousou\\\\Desktop\\\\Book_Maths_Bac_Eco\" \"c:\\\\Users\\\\sousou\\\\Desktop\\\\Book_Maths_Bac_Eco\\\\main.tex\" 2>&1; Write-Host \"EXIT: $LASTEXITCODE\"; $out | Select-String -Pattern \"^!|Error:|error\" | Select-Object -First 20)",
+      "PowerShell($r = pdflatex -interaction=nonstopmode -output-directory \"c:\\\\Users\\\\sousou\\\\Desktop\\\\Book_Maths_Bac_Eco\" \"c:\\\\Users\\\\sousou\\\\Desktop\\\\Book_Maths_Bac_Eco\\\\chapitres4_5_export.tex\" 2>&1; Write-Host \"EXIT: $LASTEXITCODE\"; $r | Select-String \"^!|Error:|Undefined\" | Select-Object -First 15)"
+    ]
+  }
+}

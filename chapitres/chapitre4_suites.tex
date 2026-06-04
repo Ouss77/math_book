@@ -1,0 +1,465 @@
+%==========================================================
+%  CHAPITRE 4 — SUITES NUMÉRIQUES
+%==========================================================
+
+\chapter{Suites Num\'{e}riques}
+
+\begin{rappel}[Vocabulaire de base]
+  \begin{itemize}
+    \item Une \textbf{suite num\'{e}rique} est une fonction $u : \N \to \R$,
+          not\'{e}e $(u_n)_{n \in \N}$.
+    \item On peut d\'{e}finir une suite par une \textbf{formule explicite}
+          $u_n = f(n)$ ou par une \textbf{relation de r\'{e}currence}
+          $u_{n+1} = f(u_n)$.
+    \item Le \textbf{terme g\'{e}n\'{e}ral} $u_n$ est la valeur de la suite au rang $n$.
+  \end{itemize}
+\end{rappel}
+
+%----------------------------------------------------------
+\section{Suites arithm\'{e}tiques et g\'{e}om\'{e}triques}
+%----------------------------------------------------------
+
+\begin{definition}[Suite arithm\'{e}tique]
+  Une suite $(u_n)$ est \textbf{arithm\'{e}tique} de raison $r$ si :
+  \[
+    \forall n \in \N, \quad u_{n+1} = u_n + r
+  \]
+\end{definition}
+
+\begin{definition}[Suite g\'{e}om\'{e}trique]
+  Une suite $(u_n)$ est \textbf{g\'{e}om\'{e}trique} de raison $q$ si :
+  \[
+    \forall n \in \N, \quad u_{n+1} = q \cdot u_n \qquad (q \neq 0,\ u_0 \neq 0)
+  \]
+\end{definition}
+\newpage 
+\begin{propriete}[Tableau comparatif]
+  \bigskip
+  \renewcommand{\arraystretch}{2.2}
+  \begin{tabularx}{\linewidth}{|>{\bfseries}p{3.2cm}|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+    \hline
+    \rowcolor{white}
+      & \textbf{\color{navy}Suite arithm\'{e}tique}
+      & \textbf{\color{forest}Suite g\'{e}om\'{e}trique} \\
+    \hline\hline
+    D\'{e}finition
+      & $u_{n+1} = u_n + r$
+      & $u_{n+1} = q \cdot u_n$ \\
+    \hline
+    Terme g\'{e}n\'{e}ral
+      & $u_n = u_p + (n-p)\,r$
+      & $u_n = u_p \cdot q^{n-p}$ \\
+    \hline
+    Somme de termes cons\'{e}cutifs
+      & $S = \dfrac{(n-p+1)(u_p + u_n)}{2}$
+      & $S = u_p \cdot \dfrac{1 - q^{n-p+1}}{1-q}$ \; ($q \neq 1$) \\
+    \hline
+    $a$, $b$, $c$ cons\'{e}cutifs
+      & $2b = a + c$
+      & $b^2 = a \cdot c$ \\
+    \hline
+  \end{tabularx}
+\end{propriete}
+
+\begin{remarque}
+  Pour la somme g\'{e}om\'{e}trique, si $q = 1$ alors $S = (n-p+1)\,u_p$.
+
+  \medskip
+  Formule utile : $1 + q + q^2 + \cdots + q^n = \dfrac{1 - q^{n+1}}{1-q}$
+  pour $q \neq 1$.
+\end{remarque}
+
+\begin{exemple}[R\'{e}solu : suite arithm\'{e}tique]
+  $(u_n)$ arithm\'{e}tique avec $u_0 = 3$ et $r = 5$.
+
+  \medskip
+  \textbf{Terme g\'{e}n\'{e}ral :} $u_n = 3 + 5n$.
+
+  \medskip
+  \textbf{Somme :} $u_0 + u_1 + \cdots + u_{10}
+  = \dfrac{11 \times (u_0 + u_{10})}{2}
+  = \dfrac{11 \times (3 + 53)}{2} = \dfrac{11 \times 56}{2} = 308$.
+\end{exemple}
+
+\begin{exemple}[R\'{e}solu : suite g\'{e}om\'{e}trique]
+  $(u_n)$ g\'{e}om\'{e}trique avec $u_0 = 2$ et $q = 3$.
+
+  \medskip
+  \textbf{Terme g\'{e}n\'{e}ral :} $u_n = 2 \times 3^n$.
+
+  \medskip
+  \textbf{Somme :} $u_0 + u_1 + \cdots + u_4
+  = 2 \times \dfrac{1 - 3^5}{1 - 3}
+  = 2 \times \dfrac{1 - 243}{-2} = 242$.
+\end{exemple}
+\newpage
+%----------------------------------------------------------
+\section{Monotonie et bornitude}
+%----------------------------------------------------------
+
+\begin{definition}[Monotonie d'une suite]
+  Soit $(u_n)$ une suite num\'{e}rique.
+  \begin{itemize}
+    \item $(u_n)$ est \textbf{croissante} si :
+          $\forall n \in \N,\quad u_{n+1} \geq u_n$
+    \item $(u_n)$ est \textbf{d\'{e}croissante} si :
+          $\forall n \in \N,\quad u_{n+1} \leq u_n$
+    \item $(u_n)$ est \textbf{constante} si :
+          $\forall n \in \N,\quad u_{n+1} = u_n$
+  \end{itemize}
+\end{definition}
+
+\begin{methode}[\'{E}tudier la monotonie d'une suite]
+  On peut \'{e}tudier le signe de $u_{n+1} - u_n$, ou,
+  si les termes sont positifs, comparer $\dfrac{u_{n+1}}{u_n}$ \`{a} $1$.
+
+  \medskip
+  \begin{center}
+  \renewcommand{\arraystretch}{1.8}
+  \begin{tabular}{|c|c|}
+    \hline
+    \textbf{\color{navy}Condition}
+      & \textbf{\color{navy}Conclusion} \\
+    \hline\hline
+    $u_{n+1} - u_n > 0$
+      & $(u_n)$ \textbf{croissante} \\
+    \hline
+    $u_{n+1} - u_n < 0$
+      & $(u_n)$ \textbf{d\'{e}croissante} \\
+    \hline
+    $\dfrac{u_{n+1}}{u_n} > 1$ \; ($u_n > 0$)
+      & $(u_n)$ \textbf{croissante} \\
+    \hline
+    $\dfrac{u_{n+1}}{u_n} < 1$ \; ($u_n > 0$)
+      & $(u_n)$ \textbf{d\'{e}croissante} \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{methode}
+
+\begin{definition}[Suite born\'{e}e]
+  Soit $(u_n)$ une suite num\'{e}rique.
+  \begin{itemize}
+    \item $(u_n)$ est \textbf{major\'{e}e} par $M$ si :
+          $\forall n \in \N,\quad u_n \leq M$
+    \item $(u_n)$ est \textbf{minor\'{e}e} par $m$ si :
+          $\forall n \in \N,\quad u_n \geq m$
+    \item $(u_n)$ est \textbf{born\'{e}e} si elle est \`{a} la fois
+          major\'{e}e et minor\'{e}e.
+  \end{itemize}
+\end{definition}
+
+\begin{exemple}[R\'{e}solu : monotonie et bornitude]
+  $u_n = \dfrac{n}{n+1}$.
+
+  \medskip
+  $u_{n+1} - u_n
+  = \dfrac{n+1}{n+2} - \dfrac{n}{n+1}
+  = \dfrac{(n+1)^2 - n(n+2)}{(n+2)(n+1)}
+  = \dfrac{1}{(n+2)(n+1)} > 0$.
+
+  Donc $(u_n)$ est \textbf{croissante}.
+
+  De plus $0 \leq u_n < 1$ pour tout $n$ :
+  $(u_n)$ est \textbf{born\'{e}e} (minor\'{e}e par $0$, major\'{e}e par $1$).
+\end{exemple}
+
+%----------------------------------------------------------
+\section{Limite d'une suite}
+%----------------------------------------------------------
+
+\begin{definition}[Convergence et divergence]
+  \begin{itemize}
+    \item $(u_n)$ \textbf{converge} vers $\ell \in \R$ si $u_n$
+          peut \^{e}tre rendu aussi proche de $\ell$ que l'on veut
+          pour $n$ suffisamment grand. On \'{e}crit :
+          $\displaystyle\lim_{n \to +\infty} u_n = \ell$
+    \item $(u_n)$ \textbf{diverge vers $+\infty$} si $u_n$ d\'{e}passe
+          tout r\'{e}el pour $n$ grand.
+  \end{itemize}
+\end{definition}
+
+\begin{propriete}[Limite de $n^\alpha$ avec $\alpha \in \R^*$]
+  \[
+    \lim_{n \to +\infty} n^\alpha = +\infty \quad (\alpha > 0)
+    \qquad\qquad
+    \lim_{n \to +\infty} n^\alpha = 0 \quad (\alpha < 0)
+  \]
+\end{propriete}
+
+\begin{propriete}[Limite de $q^n$ selon la valeur de $q$]
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{1.8}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \textbf{\color{navy}$q < -1$}
+      & \textbf{\color{navy}$q = -1$}
+      & \textbf{\color{navy}$-1 < q < 1$}
+      & \textbf{\color{navy}$q = 1$}
+      & \textbf{\color{navy}$q > 1$} \\
+    \hline\hline
+    Pas de limite & Pas de limite & $0$ & $1$ & $+\infty$ \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{propriete}
+
+\begin{propriete}[Th\'{e}or\`{e}me des gendarmes pour les suites]
+  Si $\forall n \in \N : \; U_n \leq u_n \leq V_n$
+  et si $\displaystyle\lim_{n\to+\infty} U_n
+       = \lim_{n\to+\infty} V_n = \ell$,
+  alors :
+  \[
+    \lim_{n \to +\infty} u_n = \ell
+  \]
+\end{propriete}
+
+\begin{propriete}[Th\'{e}or\`{e}me de comparaison]
+  \begin{itemize}
+    \item Si $u_n \leq v_n$ et $\displaystyle\lim u_n = +\infty$,
+          alors $\displaystyle\lim v_n = +\infty$.
+    \item Si $u_n \leq v_n$ pour tout $n$ et $(u_n)$, $(v_n)$
+          convergent, alors $\displaystyle\lim u_n \leq \lim v_n$.
+  \end{itemize}
+\end{propriete}
+\newpage
+
+%----------------------------------------------------------
+\section{Crit\`{e}res de convergence}
+%----------------------------------------------------------
+
+\begin{theoreme}[Suites monotones et born\'{e}es]
+  \begin{itemize}
+    \item Toute suite \textbf{croissante et major\'{e}e} est \textbf{convergente}.
+    \item Toute suite \textbf{d\'{e}croissante et minor\'{e}e} est \textbf{convergente}.
+  \end{itemize}
+\end{theoreme}
+
+\begin{attention}
+  Ces th\'{e}or\`{e}mes affirment l'existence de la limite,
+  mais \textbf{ne donnent pas sa valeur}.
+  Pour trouver $\ell$, on utilise les m\'{e}thodes des sections suivantes.
+\end{attention}
+
+%----------------------------------------------------------
+\section{Suite de type \texorpdfstring{$v_n = f(u_n)$}{v\_n = f(u\_n)}}
+%----------------------------------------------------------
+
+\begin{theoreme}[Suite compos\'{e}e]
+  Si $(u_n)$ est convergente de limite $\ell$ et si $f$ est
+  \textbf{continue en $\ell$}, alors la suite $(v_n)$ d\'{e}finie par
+  $v_n = f(u_n)$ est convergente et :
+  \[
+    \lim_{n \to +\infty} v_n = f(\ell)
+  \]
+\end{theoreme}
+
+\begin{exemple}[R\'{e}solu]
+  $u_n = \dfrac{1}{n}$ (converge vers $0$).
+  Soit $v_n = e^{u_n} = e^{1/n}$.
+
+  $f(x) = e^x$ est continue en $0$, donc :
+  $\displaystyle\lim_{n\to+\infty} v_n = e^0 = 1$.
+\end{exemple}
+
+%----------------------------------------------------------
+\section{Suite de type \texorpdfstring{$u_{n+1} = f(u_n)$}{u\_{n+1} = f(u\_n)}}
+%----------------------------------------------------------
+
+\begin{theoreme}[Suite r\'{e}currente]
+  Soit $(u_n)$ d\'{e}finie par $u_0 = a$ et $u_{n+1} = f(u_n)$.
+  Si :
+  \begin{itemize}
+    \item $f$ est \textbf{continue} sur un intervalle $I$
+    \item $f(I) \subset I$ \quad (stabilit\'{e})
+    \item $a \in I$
+    \item $(u_n)$ est \textbf{convergente} de limite $\ell$
+  \end{itemize}
+  alors $\ell$ est \textbf{solution de l'\'{e}quation} $f(x) = x$
+  (point fixe de $f$).
+\end{theoreme}
+
+\begin{methode}[\'{E}tudier une suite r\'{e}currente $u_{n+1} = f(u_n)$]
+  \begin{enumerate}
+    \item \textbf{Montrer} que $(u_n)$ est dans un intervalle $I$
+          stable par $f$ (par r\'{e}currence).
+    \item \textbf{Montrer} la monotonie (croissante ou d\'{e}croissante).
+    \item \textbf{Conclure} \`{a} la convergence (born\'{e}e + monotone).
+    \item \textbf{Trouver} la limite $\ell$ en r\'{e}solvant $f(\ell) = \ell$.
+  \end{enumerate}
+\end{methode}
+
+\begin{exemple}[R\'{e}solu : suite r\'{e}currente]
+  $u_0 = 0$ et $u_{n+1} = \dfrac{u_n + 2}{2}$.
+
+  \medskip
+  \textbf{\'{E}tape 1 :} Montrons par r\'{e}currence que $0 \leq u_n \leq 2$.
+
+  $u_0 = 0 \in [0,2]$. Si $u_n \in [0,2]$ alors
+  $u_{n+1} = \dfrac{u_n+2}{2} \in [1,2] \subset [0,2]$. $\checkmark$
+
+  \medskip
+  \textbf{\'{E}tape 2 :}
+  $u_{n+1} - u_n = \dfrac{u_n+2}{2} - u_n = \dfrac{2 - u_n}{2} \geq 0$
+  car $u_n \leq 2$.
+  Donc $(u_n)$ est \textbf{croissante}.
+
+  \medskip
+  \textbf{\'{E}tape 3 :} Croissante et major\'{e}e par $2$ $\Rightarrow$
+  $(u_n)$ \textbf{converge}.
+
+  \medskip
+  \textbf{\'{E}tape 4 :} $\ell = f(\ell)$ :
+  $\ell = \dfrac{\ell + 2}{2} \Rightarrow 2\ell = \ell + 2 \Rightarrow \ell = 2$.
+\end{exemple}
+\newpage
+%----------------------------------------------------------
+\section{Repr\'{e}sentation graphique d'une suite r\'{e}currente}
+%----------------------------------------------------------
+\begin{propriete}[Toile d'araign\'{e}e]
+  La suite $u_{n+1} = f(u_n)$ se visualise graphiquement par
+  la \textbf{m\'{e}thode de la toile d'araign\'{e}e} :
+  \begin{enumerate}
+    \item Tracer $\mathcal{C}_f$ (courbe de $f$) et la droite $y = x$.
+    \item Partir du point $(u_0, 0)$ sur l'axe des abscisses.
+    \item Monter verticalement jusqu'\`{a} $\mathcal{C}_f$ :
+          on obtient $(u_0, f(u_0)) = (u_0, u_1)$.
+    \item Aller horizontalement jusqu'\`{a} la droite $y=x$ :
+          on obtient $(u_1, u_1)$.
+    \item R\'{e}p\'{e}ter les \'{e}tapes 3--4.
+  \end{enumerate}
+\end{propriete}
+
+\begin{exemple}[Toile d'araign\'{e}e : $u_{n+1} = \frac{u_n+2}{2}$, $u_0 = 0$]
+  \begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines  = center,
+      xlabel      = {$x$},
+      ylabel      = {$y$},
+      xmin = -0.2, xmax = 2.8,
+      ymin = -0.2, ymax = 2.8,
+      xtick       = {0,0.5,1,1.5,2,2.5},
+      ytick       = {0,0.5,1,1.5,2,2.5},
+      grid        = major,
+      grid style  = {gray!20},
+      width = 10cm, height = 10cm,
+    ]
+      % Courbe f(x) = (x+2)/2
+      \addplot[navy, very thick, domain=0:2.8]
+        {(x+2)/2};
+      \addlegendentry{$f(x)=\frac{x+2}{2}$}
+
+      % Droite y = x
+      \addplot[burgundy, dashed, thick, domain=0:2.8]
+        {x};
+      \addlegendentry{$y = x$}
+
+      % Point fixe ℓ = 2
+      \addplot[mark=*, mark size=4pt, burgundy]
+        coordinates {(2,2)};
+      \node[above left, burgundy, font=\small\bfseries]
+        at (axis cs:2,2) {$\ell=2$};
+
+      % Toile d'araignée : u0=0
+      % (0,0) → (0, f(0)=1)
+      \addplot[forest, thick]
+        coordinates {(0,0)(0,1)};
+      % (0,1) → (1,1)
+      \addplot[forest, thick]
+        coordinates {(0,1)(1,1)};
+      % (1,1) → (1, f(1)=1.5)
+      \addplot[forest, thick]
+        coordinates {(1,1)(1,1.5)};
+      % (1,1.5) → (1.5,1.5)
+      \addplot[forest, thick]
+        coordinates {(1,1.5)(1.5,1.5)};
+      % (1.5,1.5) → (1.5, f(1.5)=1.75)
+      \addplot[forest, thick]
+        coordinates {(1.5,1.5)(1.5,1.75)};
+      % (1.5,1.75) → (1.75,1.75)
+      \addplot[forest, thick]
+        coordinates {(1.5,1.75)(1.75,1.75)};
+      % (1.75,1.75) → (1.75, f(1.75)=1.875)
+      \addplot[forest, thick]
+        coordinates {(1.75,1.75)(1.75,1.875)};
+      % (1.75,1.875) → (1.875,1.875)
+      \addplot[forest, thick]
+        coordinates {(1.75,1.875)(1.875,1.875)};
+
+      % Points u0, u1, u2, u3
+      \addplot[mark=|, mark size=5pt, forest]
+        coordinates {(0,0)(1,0)(1.5,0)(1.75,0)};
+      \node[below, forest, font=\footnotesize] at (axis cs:0,0)    {$u_0$};
+      \node[below, forest, font=\footnotesize] at (axis cs:1,0)    {$u_1$};
+      \node[below, forest, font=\footnotesize] at (axis cs:1.5,0)  {$u_2$};
+      \node[below, forest, font=\footnotesize] at (axis cs:1.75,0) {$u_3$};
+    \end{axis}
+  \end{tikzpicture}
+  \end{center}
+\end{exemple}
+
+\newpage
+%----------------------------------------------------------
+\section*{Exercices du chapitre}
+\addcontentsline{toc}{section}{Exercices : Suites num\'{e}riques}
+%----------------------------------------------------------
+
+\begin{exercice}[1 : Suite arithm\'{e}tique]
+  $(u_n)$ est arithm\'{e}tique avec $u_2 = 7$ et $u_5 = 16$.
+  \begin{enumerate}
+    \item D\'{e}terminer la raison $r$ et le premier terme $u_0$.
+    \item Exprimer $u_n$ en fonction de $n$.
+    \item Calculer $S = u_0 + u_1 + \cdots + u_{20}$.
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[2 : Suite g\'{e}om\'{e}trique]
+  $(u_n)$ est g\'{e}om\'{e}trique avec $u_0 = 5$ et $u_3 = 40$.
+  \begin{enumerate}
+    \item D\'{e}terminer la raison $q$.
+    \item Exprimer $u_n$ en fonction de $n$.
+    \item Calculer $S = u_0 + u_1 + \cdots + u_7$.
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[3 : Monotonie et bornitude]
+  Pour chaque suite, \'{e}tudier la monotonie et la bornitude :
+  \begin{enumerate}
+    \item $u_n = \dfrac{2n+1}{n+2}$
+    \item $u_n = 2^n - n$
+    \item $u_n = \dfrac{(-1)^n}{n+1}$
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[4 : Limite d'une suite]
+  Calculer les limites suivantes :
+  \begin{multicols}{2}
+  \begin{enumerate}
+    \item $\displaystyle\lim_{n\to+\infty} \frac{3n^2-1}{n^2+4}$
+    \item $\displaystyle\lim_{n\to+\infty} \frac{n+1}{\sqrt{n}}$
+    \item $\displaystyle\lim_{n\to+\infty} \left(\frac{2}{3}\right)^n$
+    \item $\displaystyle\lim_{n\to+\infty} n \cdot \left(\frac{1}{2}\right)^n$
+  \end{enumerate}
+  \end{multicols}
+\end{exercice}
+
+\begin{exercice}[5 : Suite r\'{e}currente]
+  Soit $(u_n)$ d\'{e}finie par $u_0 = 1$ et $u_{n+1} = \sqrt{u_n + 2}$.
+  \begin{enumerate}
+    \item Montrer par r\'{e}currence que $u_n \in [0, 2]$ pour tout $n$.
+    \item Montrer que $(u_n)$ est croissante.
+    \item Conclure que $(u_n)$ converge et d\'{e}terminer sa limite.
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[6 : Toile d'araign\'{e}e]
+  Soit $(u_n)$ d\'{e}finie par $u_0 = 3$ et $u_{n+1} = \dfrac{1}{2}u_n + 1$.
+  \begin{enumerate}
+    \item R\'{e}soudre $f(x) = x$ pour trouver le point fixe.
+    \item Calculer $u_1$, $u_2$, $u_3$.
+    \item Repr\'{e}senter la toile d'araign\'{e}e.
+    \item D\'{e}terminer la limite de $(u_n)$.
+  \end{enumerate}
+\end{exercice}

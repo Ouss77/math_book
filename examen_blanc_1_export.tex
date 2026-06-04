@@ -1,0 +1,53 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{geometry}
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+\usepackage{xcolor}
+
+\definecolor{navy}{RGB}{18, 52, 96}
+\definecolor{navylight}{RGB}{235, 241, 250}
+\definecolor{forest}{RGB}{26, 80, 50}
+\definecolor{burgundy}{RGB}{120, 25, 40}
+\definecolor{charcoal}{RGB}{52, 58, 64}
+
+\usepackage{array, booktabs, colortbl, tabularx}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\circ$}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{navy}\textbf{Math\'{e}matiques \textendash{} Bac \'{E}conomie}}
+\fancyhead[C]{\small\color{charcoal}Examen Blanc N\textsuperscript{o}1}
+\fancyhead[R]{\small\color{charcoal}Session 2026}
+\fancyfoot[C]{\small\color{charcoal}\thepage\ / \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\dx}{\,dx}
+
+% \cleardoublepage n'existe pas en article — on le neutralise
+\let\cleardoublepage\clearpage
+
+%==========================================================
+\begin{document}
+\thispagestyle{empty}
+
+\input{examens/examen_blanc_1}
+
+\end{document}

@@ -1,0 +1,462 @@
+%==========================================================
+%  CHAPITRE 5 — FONCTIONS EXPONENTIELLES
+%==========================================================
+
+\chapter{Fonctions Exponentielles}
+
+\begin{rappel}[Logarithme n\'{e}p\'{e}rien : rappels essentiels]
+  \begin{itemize}
+    \item $\ln$ est d\'{e}finie sur $]0,+\infty[$ et est la r\'{e}ciproque de $\exp$.
+    \item $\ln(e) = 1$, \quad $\ln(1) = 0$, \quad $\ln(ab) = \ln a + \ln b$.
+    \item $(\ln x)' = \dfrac{1}{x}$ sur $]0,+\infty[$.
+  \end{itemize}
+\end{rappel}
+
+%----------------------------------------------------------
+\section{Fonction exponentielle n\'{e}p\'{e}rienne}
+%----------------------------------------------------------
+
+\subsection{D\'{e}finition et premi\`{e}res propri\'{e}t\'{e}s}
+
+\begin{definition}[Fonction exponentielle n\'{e}p\'{e}rienne]
+  La fonction \textbf{exponentielle n\'{e}p\'{e}rienne}, not\'{e}e $\exp$ ou $e^x$,
+  est la \textbf{fonction r\'{e}ciproque} de $\ln$.
+
+  \medskip
+  On pose : $\exp(x) = e^x$, ce qui signifie :
+  \[
+    e^x = y \;\iff\; \ln(y) = x
+    \qquad \bigl(x \in \R,\; y > 0\bigr)
+  \]
+\end{definition}
+
+\begin{propriete}[Cons\'{e}quences directes]
+  Pour tout $x \in \R$ et tout $y > 0$ :
+  \[
+    e^{\ln(y)} = y \qquad \ln(e^x) = x \qquad e^0 = 1 \qquad e^1 = e
+  \]
+\end{propriete}
+\newpage
+
+\begin{propriete}[R\`{e}gles de calcul]
+  Pour tous r\'{e}els $x$, $y$ et tout rationnel $r$ :
+
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{2}
+  \begin{tabular}{|c|c|}
+    \hline
+    \textbf{\color{navy}Propri\'{e}t\'{e}}
+      & \textbf{\color{navy}Formule} \\
+    \hline\hline
+    Produit
+      & $e^x \times e^y = e^{x+y}$ \\
+    \hline
+    Quotient
+      & $\dfrac{e^x}{e^y} = e^{x-y}$ \\
+    \hline
+    Inverse
+      & $\dfrac{1}{e^x} = e^{-x}$ \\
+    \hline
+    Puissance
+      & $\left(e^x\right)^r = e^{rx}$ \\
+    \hline
+    Comparaison
+      & $e^x = e^y \iff x = y$ \quad et \quad $e^x > e^y \iff x > y$ \\
+    \hline
+    \'{E}quation
+      & $e^x = y \iff x = \ln(y)$ \quad ($y > 0$) \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{propriete}
+
+\begin{attention}
+  \textbf{Erreurs fr\'{e}quentes \`{a} \'{e}viter :}
+  \[
+    e^{x+y} \neq e^x + e^y \qquad
+    e^{x \times y} \neq e^x \times e^y \qquad
+    (e^x)^y = e^{xy} \neq e^{e^{xy}}
+  \]
+\end{attention}
+
+%----------------------------------------------------------
+\subsection{Domaine de d\'{e}finition des fonctions avec \texorpdfstring{$e^{u(x)}$}{e\^{u(x)}}}
+%----------------------------------------------------------
+
+\begin{propriete}[Domaine de d\'{e}finition]
+  \begin{center}
+  \renewcommand{\arraystretch}{1.8}
+  \begin{tabular}{|c|c|}
+    \hline
+    \textbf{\color{navy}Fonction}
+      & \textbf{\color{navy}Domaine de d\'{e}finition} \\
+    \hline\hline
+    $f(x) = e^x$
+      & $D_f = \R$ \\
+    \hline
+    $f(x) = e^{u(x)}$
+      & $D_f = \{x \in \R \mid x \in D_u\}$ \\
+    \hline
+  \end{tabular}
+  \end{center}
+
+  \begin{remarque}
+    $e^{u(x)}$ est toujours \textbf{strictement positif} :
+    $e^{u(x)} > 0$ pour tout $x \in D_f$.
+    Son domaine est simplement celui de $u$.
+  \end{remarque}
+\end{propriete}
+
+%----------------------------------------------------------
+\subsection{Limites usuelles}
+%----------------------------------------------------------
+
+\begin{propriete}[Limites de r\'{e}f\'{e}rence]
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{2}
+  \begin{tabular}{|c|c|}
+    \hline
+    \textbf{\color{navy}Limite}
+      & \textbf{\color{navy}R\'{e}sultat} \\
+    \hline\hline
+    $\displaystyle\lim_{x \to +\infty} e^x$
+      & $+\infty$ \\
+    \hline
+    $\displaystyle\lim_{x \to -\infty} e^x$
+      & $0$ \\
+    \hline
+    $\displaystyle\lim_{x \to +\infty} \frac{e^x}{x^n}$
+      & $+\infty$ \quad ($n \in \N^*$) \quad \textit{(croissance compar\'{e}e)} \\
+    \hline
+    $\displaystyle\lim_{x \to -\infty} x^n e^x$
+      & $0$ \quad ($n \in \N^*$) \quad \textit{(croissance compar\'{e}e)} \\
+    \hline
+    $\displaystyle\lim_{x \to 0} \frac{e^x - 1}{x}$
+      & $1$ \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{propriete}
+
+\begin{remarque}
+  \textbf{Croissance compar\'{e}e :} l'exponentielle cro\^{i}t
+  \textbf{plus vite} que toute puissance de $x$.
+  C'est fondamental pour les calculs de limites.
+\end{remarque}
+
+%----------------------------------------------------------
+\subsection{Continuit\'{e} et d\'{e}rivabilit\'{e}}
+%----------------------------------------------------------
+
+\begin{propriete}[D\'{e}riv\'{e}e de $e^x$ et de $e^{u(x)}$]
+  \begin{itemize}
+    \item La fonction $x \mapsto e^x$ est d\'{e}rivable sur $\R$ et :
+    \[
+      \bigl(e^x\bigr)' = e^x
+    \]
+    \item Si $u$ est d\'{e}rivable sur $I$, alors $x \mapsto e^{u(x)}$
+          est d\'{e}rivable sur $I$ et :
+    \[
+      \bigl(e^{u(x)}\bigr)' = u'(x) \cdot e^{u(x)}
+    \]
+  \end{itemize}
+\end{propriete}
+
+\begin{exemple}[R\'{e}solus : d\'{e}riv\'{e}es]
+  \begin{itemize}
+    \item $f(x) = e^{3x-1}$
+    \quad $\Rightarrow$ \quad $u(x) = 3x-1$, $u'(x) = 3$
+    \quad $\Rightarrow$ \quad $f'(x) = 3e^{3x-1}$
+
+    \medskip
+    \item $f(x) = e^{x^2}$
+    \quad $\Rightarrow$ \quad $u(x) = x^2$, $u'(x) = 2x$
+    \quad $\Rightarrow$ \quad $f'(x) = 2x\,e^{x^2}$
+
+    \medskip
+    \item $f(x) = x^2 e^x$
+    \quad $\Rightarrow$ \quad r\`{e}gle du produit :
+    $f'(x) = 2x\,e^x + x^2\,e^x = (2x+x^2)\,e^x = x(x+2)\,e^x$
+  \end{itemize}
+\end{exemple}
+
+%----------------------------------------------------------
+\subsection{Repr\'{e}sentation graphique}
+%----------------------------------------------------------
+
+\begin{propriete}[Courbe de $e^x$]
+  La courbe de $f(x) = e^x$ passe par $(0,1)$, $(1,e)$ et $(-1, 1/e)$.
+  Elle admet l'axe des abscisses comme \textbf{asymptote horizontale}
+  en $-\infty$.
+\end{propriete}
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines  = center,
+    xlabel      = {$x$},
+    ylabel      = {$y$},
+    xmin = -3, xmax = 2.8,
+    ymin = -0.5, ymax = 12,
+    xtick       = {-3,-2,-1,0,1,2},
+    ytick       = {0,2,4,6,8,10},
+    grid        = major,
+    grid style  = {gray!20},
+    width = 10cm, height = 8cm,
+  ]
+    % Courbe e^x
+    \addplot[navy, very thick, domain=-3:2.5, samples=150]
+      {exp(x)};
+    \addlegendentry{$f(x)=e^x$}
+
+    % Courbe ln(x) (réciproque)
+    \addplot[forest, thick, dashed, domain=0.05:2.8, samples=150]
+      {ln(x)};
+    \addlegendentry{$f^{-1}(x)=\ln x$}
+
+    % Bissectrice y=x
+    \addplot[burgundy, dashed, thin, domain=-2.5:2.8]
+      {x};
+    \addlegendentry{$y = x$}
+
+    % Asymptote y=0
+    \addplot[gray, dotted, domain=-3:0]
+      {0};
+
+    % Points remarquables
+    \addplot[mark=*, mark size=3pt, navy]
+      coordinates {(0,1)(1,2.718)};
+    \node[above left, navy, font=\small] at (axis cs:0,1) {$(0,1)$};
+    \node[right, navy, font=\small] at (axis cs:1,2.718) {$(1,e)$};
+
+    \addplot[mark=*, mark size=3pt, forest]
+      coordinates {(1,0)(2.718,1)};
+    \node[below, forest, font=\small] at (axis cs:1,0) {$(1,0)$};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+%----------------------------------------------------------
+\section{Fonction exponentielle de base \texorpdfstring{$a$}{a}}
+%----------------------------------------------------------
+
+\begin{definition}[Exponentielle de base $a$]
+  Pour $a \in ]0,+\infty[$ et $a \neq 1$,
+  la \textbf{fonction exponentielle de base $a$} est d\'{e}finie par :
+  \[
+    \forall x \in \R, \qquad a^x = e^{x\ln a}
+  \]
+\end{definition}
+
+\begin{propriete}[R\`{e}gles de calcul]
+  Pour tous $x, y \in \R$ et $r \in \Q$ :
+  \[
+    a^x \times a^y = a^{x+y} \qquad
+    \frac{a^x}{a^y} = a^{x-y} \qquad
+    \frac{1}{a^x} = a^{-x} \qquad
+    (a^x)^r = a^{rx}
+  \]
+  \[
+    a^x = e^{x\ln a} \qquad
+    \log_a(a^x) = x \qquad
+    a^{\log_a(x)} = x \quad (x > 0)
+  \]
+  \[
+    a^x = a^y \iff x = y \qquad
+    a^x = y \iff x = \log_a(y) \quad (y > 0)
+  \]
+\end{propriete}
+\newpage
+\begin{propriete}[Variations selon la valeur de $a$]
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{2}
+  \begin{tabular}{|p{6cm}|p{6cm}|}
+    \hline
+    \textbf{\color{burgundy}$0 < a < 1$ \quad (d\'{e}croissante)}
+      & \textbf{\color{forest}$a > 1$ \quad (croissante)} \\
+    \hline\hline
+    $a^x > a^y \iff x < y$
+      & $a^x > a^y \iff x > y$ \\
+    \hline
+    $\displaystyle\lim_{x \to +\infty} a^x = 0$
+      & $\displaystyle\lim_{x \to +\infty} a^x = +\infty$ \\
+    \hline
+    $\displaystyle\lim_{x \to -\infty} a^x = +\infty$
+      & $\displaystyle\lim_{x \to -\infty} a^x = 0$ \\
+    \hline
+    \multicolumn{2}{|c|}{%
+      $\displaystyle\lim_{x \to 0} \dfrac{a^x - 1}{x} = \ln a$
+    } \\
+    \hline
+    \multicolumn{2}{|c|}{%
+      $(a^x)' = \ln(a) \cdot a^x$
+    } \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{propriete}
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines  = center,
+    xlabel      = {$x$},
+    ylabel      = {$y$},
+    xmin = -2.5, xmax = 2.5,
+    ymin = -0.3, ymax = 7,
+    xtick       = {-2,-1,0,1,2},
+    ytick       = {0,1,2,3,4,5,6},
+    grid        = major,
+    grid style  = {gray!20},
+    width = 10cm, height = 8cm,
+  ]
+    % a=2 (a > 1, croissante)
+    \addplot[navy, very thick, domain=-2.4:2.4, samples=100]
+      {2^x};
+    \addlegendentry{$2^x$ \; ($a=2>1$, croissante)}
+
+    % a=1/2 (0 < a < 1, décroissante)
+    \addplot[burgundy, very thick, domain=-2.4:2.4, samples=100]
+      {(0.5)^x};
+    \addlegendentry{$(1/2)^x$ \; ($a=1/2<1$, d\'{e}croissante)}
+
+    % a=e (courbe de référence)
+    \addplot[forest, thick, dashed, domain=-2.4:1.9, samples=100]
+      {exp(x)};
+    \addlegendentry{$e^x$ \; (r\'{e}f\'{e}rence)}
+
+    % Point commun (0,1)
+    \addplot[mark=*, mark size=4pt, black]
+      coordinates {(0,1)};
+    \node[above right, black, font=\small\bfseries]
+      at (axis cs:0,1) {$(0,1)$};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\begin{exemple}[R\'{e}solus : \'{e}quations et in\'{e}quations avec $a^x$]
+  \begin{itemize}
+    \item R\'{e}soudre $2^x = 8$ :
+    \quad $2^x = 2^3 \Rightarrow x = 3$
+
+    \medskip
+    \item R\'{e}soudre $3^x = 5$ :
+    \quad $x\ln 3 = \ln 5 \Rightarrow x = \dfrac{\ln 5}{\ln 3}$
+
+    \medskip
+    \item R\'{e}soudre $\left(\dfrac{1}{2}\right)^x > 4$ :
+    \quad $2^{-x} > 2^2 \Rightarrow -x > 2 \Rightarrow x < -2$
+    \quad (in\'{e}galit\'{e} retourn\'{e}e car $a = 1/2 < 1$)
+  \end{itemize}
+\end{exemple}
+
+%----------------------------------------------------------
+\section{Signe et \'{e}quations avec \texorpdfstring{$e^{u(x)}$}{e\^{u(x)}}}
+%----------------------------------------------------------
+
+\begin{propriete}[Signe de $e^{u(x)}$]
+  \[
+    e^{u(x)} > 0 \quad \text{pour tout } x \in D_f
+  \]
+  On ne peut \textbf{jamais} avoir $e^{u(x)} = 0$ ou $e^{u(x)} < 0$.
+\end{propriete}
+
+\begin{methode}[R\'{e}soudre $e^{u(x)} = e^{v(x)}$ et $e^{u(x)} > e^{v(x)}$]
+  \[
+    e^{u(x)} = e^{v(x)} \iff u(x) = v(x)
+  \]
+  \[
+    e^{u(x)} > e^{v(x)} \iff u(x) > v(x)
+  \]
+  car $x \mapsto e^x$ est \textbf{strictement croissante}.
+\end{methode}
+
+\begin{exemple}[R\'{e}solus : \'{e}quations avec $e^{u(x)}$]
+  \begin{itemize}
+    \item $e^{2x-1} = e^{x+3}$
+    \quad $\Rightarrow$ \quad $2x-1 = x+3$
+    \quad $\Rightarrow$ \quad $x = 4$
+
+    \medskip
+    \item $e^{x^2} = e^{2x}$
+    \quad $\Rightarrow$ \quad $x^2 = 2x$
+    \quad $\Rightarrow$ \quad $x(x-2) = 0$
+    \quad $\Rightarrow$ \quad $x = 0$ ou $x = 2$
+
+    \medskip
+    \item $e^{x^2 - 3} > 1 = e^0$
+    \quad $\Rightarrow$ \quad $x^2 - 3 > 0$
+    \quad $\Rightarrow$ \quad $x < -\sqrt{3}$ ou $x > \sqrt{3}$
+  \end{itemize}
+\end{exemple}
+
+\newpage
+%----------------------------------------------------------
+\section*{Exercices du chapitre}
+\addcontentsline{toc}{section}{Exercices : Fonctions exponentielles}
+%----------------------------------------------------------
+
+\begin{exercice}[1 : Calculs avec $e^x$]
+  Simplifier les expressions suivantes :
+  \begin{multicols}{2}
+  \begin{enumerate}
+    \item $e^3 \times e^{-1}$
+    \item $\dfrac{e^5}{e^2}$
+    \item $(e^2)^3$
+    \item $e^{\ln 5}$
+    \item $\ln(e^{-4})$
+    \item $e^{2\ln 3}$
+  \end{enumerate}
+  \end{multicols}
+\end{exercice}
+
+\begin{exercice}[2 : D\'{e}riv\'{e}es]
+  Calculer la d\'{e}riv\'{e}e des fonctions suivantes :
+  \begin{multicols}{2}
+  \begin{enumerate}
+    \item $f(x) = e^{4x+1}$
+    \item $f(x) = e^{x^2-3}$
+    \item $f(x) = (x+1)e^x$
+    \item $f(x) = \dfrac{e^x}{x}$
+    \item $f(x) = e^{\sqrt{x}}$
+    \item $f(x) = e^{-x^2}$
+  \end{enumerate}
+  \end{multicols}
+\end{exercice}
+
+\begin{exercice}[3 : \'{E}quations et in\'{e}quations]
+  R\'{e}soudre dans $\R$ :
+  \begin{enumerate}
+    \item $e^{3x} = e^{x+4}$
+    \item $e^{x^2-1} = 1$
+    \item $e^{2x} - 3e^x + 2 = 0$
+          \quad (poser $X = e^x$)
+    \item $e^x > e^{2-x}$
+    \item $2^x = 7$ \quad (donner le r\'{e}sultat avec $\ln$)
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[4 : Limites]
+  Calculer les limites suivantes :
+  \begin{multicols}{2}
+  \begin{enumerate}
+    \item $\displaystyle\lim_{x\to+\infty} \frac{e^x}{x^3}$
+    \item $\displaystyle\lim_{x\to-\infty} x^2 e^x$
+    \item $\displaystyle\lim_{x\to+\infty} (e^x - x^{100})$
+    \item $\displaystyle\lim_{x\to 0} \frac{e^{2x}-1}{x}$
+  \end{enumerate}
+  \end{multicols}
+\end{exercice}
+
+\begin{exercice}[5 : \'{E}tude compl\`{e}te]
+  Soit $f(x) = (x-1)e^x$ d\'{e}finie sur $\R$.
+  \begin{enumerate}
+    \item Calculer les limites de $f$ en $\pm\infty$.
+    \item Calculer $f'(x)$ et dresser le tableau de variations.
+    \item D\'{e}terminer les points d'inflexion (calculer $f''$).
+    \item Tracer la courbe $\mathcal{C}_f$.
+  \end{enumerate}
+\end{exercice}

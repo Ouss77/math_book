@@ -1,0 +1,157 @@
+% !TEX root = ../main.tex
+%==========================================================
+%  EXAMEN BLANC N°1 — VERSION COMPACTE (LIVRE)
+%==========================================================
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Examen Blanc N\textsuperscript{o}1}
+\thispagestyle{empty}
+
+%----------------------------------------------------------
+%  TITRE
+%----------------------------------------------------------
+\begin{center}
+  {\LARGE\bfseries\color{navy} Examen Blanc N\textsuperscript{o}1}\\[0.3cm]
+  {\large\bfseries Math\'{e}matiques \textemdash{} Bac Sciences \'{E}conomiques \textemdash{} Session 2026}
+\end{center}
+
+\smallskip
+{\small Version compacte professionnelle adapt\'{e}e pour un livre de pr\'{e}paration au baccalaur\'{e}at.}
+\smallskip
+
+%----------------------------------------------------------
+%  TABLEAU DES COMPOSANTES
+%----------------------------------------------------------
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|l|c|}
+  \hline
+  \rowcolor{navylight}
+  \textbf{\color{navy}Exercice} & \multicolumn{1}{c|}{\textbf{\color{navy}Th\`{e}me}} & \textbf{\color{navy}Points} \\
+  \hline
+  1 & Suites num\'{e}riques & 4 \\
+  \hline
+  2 & Probabilit\'{e}s & 1,5 \\
+  \hline
+  3 & Probabilit\'{e}s & 2,5 \\
+  \hline
+  4 & \'{E}tude graphique & 4,75 \\
+  \hline
+  5 & Fonction et int\'{e}grale & 7,25 \\
+  \hline
+\end{tabular}
+\end{center}
+
+\bigskip
+
+%==========================================================
+%  EXERCICE 1 — SUITES NUMÉRIQUES  (4 pts)
+%==========================================================
+\noindent\textbf{Exercice 1 :}\\
+Soit la suite d\'{e}finie par :
+$u_0 = 1$ \quad et \quad $u_{n+1} = 6 - \dfrac{7}{u_n + 2}$ \quad pour tout $n \in \N$.
+
+\begin{enumerate}[leftmargin=1.5em, label=\textbf{\arabic*)}, itemsep=2pt, topsep=4pt]
+  \item Calculer $u_1$ et $u_2$.
+  \item Montrer par r\'{e}currence que $1 \leq u_n \leq 5$ pour tout $n \in \N$.
+  \item
+    \begin{enumerate}[label=\textbf{\alph*)}, itemsep=1pt, topsep=1pt]
+      \item V\'{e}rifier que $u_{n+1} = \dfrac{6u_n + 5}{u_n + 2}$ pour tout $n \in \N$.
+      \item Montrer que $u_{n+1} - u_n = \dfrac{-(u_n-5)(1+u_n)}{u_n+2}$,
+            puis d\'{e}duire que $(u_n)$ est croissante.
+      \item En d\'{e}duire que $(u_n)$ est convergente.
+    \end{enumerate}
+  \item On consid\`{e}re $(v_n)$ d\'{e}finie par $v_n = \dfrac{u_n - 5}{u_n + 1}$.
+    \begin{enumerate}[label=\textbf{\alph*)}, itemsep=1pt, topsep=1pt]
+      \item Montrer que $(v_n)$ est g\'{e}om\'{e}trique de raison $\dfrac{1}{7}$.
+      \item D\'{e}terminer $v_n$ en fonction de $n$, puis $u_n$ en fonction de $n$.
+      \item Calculer $\displaystyle\lim_{n \to +\infty} u_n$.
+      \item Calculer $S_n = v_0 + v_1 + \cdots + v_n$ en fonction de $n$.
+    \end{enumerate}
+\end{enumerate}
+
+\medskip
+
+%==========================================================
+%  EXERCICE 2 — PROBABILITÉS  (1,5 pts)
+%==========================================================
+\noindent\textbf{Exercice 2 :}\\
+Soit $X$ une variable al\'{e}atoire telle que :
+$p(X=-1)=a$ ; $p(X=1)=2a$ ; $p(X=2)=3a$.
+
+\begin{enumerate}[leftmargin=1.5em, label=\textbf{\arabic*.}, itemsep=2pt, topsep=4pt]
+  \item D\'{e}terminer $a$.
+  \item Calculer $E(X)$ et $V(X)$.
+\end{enumerate}
+
+\medskip
+
+%==========================================================
+%  EXERCICE 3 — PROBABILITÉS  (2,5 pts)
+%==========================================================
+\noindent\textbf{Exercice 3 :}\\
+Une urne contient 5 boules noires num\'{e}rot\'{e}es $1;1;2;2;2$
+et 4 boules blanches num\'{e}rot\'{e}es $1;1;2;2$.
+On tire simultan\'{e}ment 3 boules. On pose :
+\begin{itemize}[itemsep=0pt, topsep=2pt, leftmargin=2em]
+  \item $A$ : \guillemotleft{} les 3 boules sont de m\^{e}me couleur \guillemotright{}
+  \item $B$ : \guillemotleft{} les 3 boules portent le m\^{e}me nombre \guillemotright{}
+\end{itemize}
+
+\begin{enumerate}[leftmargin=1.5em, label=\textbf{\arabic*.}, itemsep=2pt, topsep=4pt]
+  \item Calculer $p(A)$, $p(B)$ puis montrer que $p(A \cap B) = \dfrac{1}{84}$.
+  \item Les \'{e}v\'{e}nements $A$ et $B$ sont-ils ind\'{e}pendants ?
+  \item Sachant que les boules sont de m\^{e}me couleur,
+        calculer la probabilit\'{e} qu'elles portent le m\^{e}me nombre.
+\end{enumerate}
+
+\medskip
+
+%==========================================================
+%  EXERCICE 4 — ÉTUDE GRAPHIQUE  (4,75 pts)
+%==========================================================
+\noindent\textbf{Exercice 4 :}\\
+On consid\`{e}re la fonction $f$ d\'{e}finie par sa courbe repr\'{e}sentative $(\mathcal{C})$
+dans un rep\`{e}re orthonorm\'{e}, avec une asymptote verticale $x = -1$
+et une asymptote oblique $y = \dfrac{3}{5}\,x$.\\
+R\'{e}pondre graphiquement aux questions suivantes :
+
+\begin{enumerate}[leftmargin=1.5em, label=\textbf{\arabic*.}, itemsep=2pt, topsep=4pt]
+  \item D\'{e}terminer le domaine de d\'{e}finition de $f$.
+  \item D\'{e}terminer le signe de $f$.
+  \item D\'{e}terminer $\displaystyle\lim_{x \to +\infty} f(x)$ et
+        $\displaystyle\lim_{x \to -1^-} f(x)$,
+        puis les branches infinies de $(\mathcal{C})$.
+\end{enumerate}
+
+\medskip
+
+%==========================================================
+%  EXERCICE 5 — ÉTUDE DE FONCTION  (7,25 pts)
+%==========================================================
+\noindent\textbf{Exercice 5 :}\\
+Soit $f$ la fonction d\'{e}finie sur $\R$ par $f(x) = (1-x)^2\,e^x$.
+Soit $(\mathcal{C}_f)$ sa courbe dans un rep\`{e}re orthonorm\'{e}
+avec $\|\vec{i}\| = 1\,\text{cm}$.
+
+\begin{enumerate}[leftmargin=1.5em, label=\textbf{\arabic*.}, itemsep=2pt, topsep=4pt]
+  \item Calculer $\displaystyle\lim_{x \to +\infty} f(x)$ et
+        $\displaystyle\lim_{x \to +\infty} \dfrac{f(x)}{x}$,
+        puis donner une interpr\'{e}tation g\'{e}om\'{e}trique.
+  \item V\'{e}rifier que $f(x) = x^2 e^x\!\left(1 - \dfrac{2}{x} + \dfrac{1}{x^2}\right)$,
+        calculer $\displaystyle\lim_{x \to -\infty} f(x)$ et donner une interpr\'{e}tation
+        g\'{e}om\'{e}trique.
+  \item Montrer que $f'(x) = (x-1)(x+1)\,e^x$, puis dresser le tableau de variations de $f$.
+  \item D\'{e}terminer l'\'{e}quation de la tangente $(T)$ \`{a} $(\mathcal{C}_f)$
+        au point d'abscisse $0$.
+  \item Montrer que $F : x \mapsto e^x(x^2 - 4x + 5)$ est une primitive de $f$,
+        puis calculer l'aire (en cm\textsuperscript{2}) du domaine d\'{e}limit\'{e}
+        par $(\mathcal{C}_f)$, la droite $y = 1$ et les droites
+        $x = -\dfrac{5}{2}$, $x = \dfrac{3}{2}$.
+\end{enumerate}
+
+\begin{center}
+  \color{charcoal}\rule{5cm}{0.4pt}\\[3pt]
+  \textit{--- Fin du sujet ---}\\
+  \rule{5cm}{0.4pt}
+\end{center}

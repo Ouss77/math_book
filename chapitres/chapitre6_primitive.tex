@@ -1,0 +1,316 @@
+%==========================================================
+%  CHAPITRE 7 — FONCTIONS PRIMITIVES
+%==========================================================
+
+\chapter{Fonctions Primitives}
+
+\begin{rappel}[Lien avec la d\'{e}rivation]
+  Calculer une primitive est l'\textbf{op\'{e}ration inverse} de la d\'{e}rivation.
+  Si $F$ est une primitive de $f$, alors $F' = f$.
+  \begin{itemize}
+    \item D\'{e}river : $F \xrightarrow{\ '\ } f$
+    \item Primitiver : $f \xrightarrow{\int} F$
+  \end{itemize}
+\end{rappel}
+
+%----------------------------------------------------------
+\section{D\'{e}finition et propri\'{e}t\'{e}s g\'{e}n\'{e}rales}
+%----------------------------------------------------------
+
+\begin{definition}[Fonction primitive]
+  Soit $f$ une fonction d\'{e}finie sur un intervalle $I$.
+  On dit que $F$ est une \textbf{primitive de $f$ sur $I$} si :
+  \begin{itemize}
+    \item $F$ est d\'{e}rivable sur $I$
+    \item $\forall x \in I, \quad F'(x) = f(x)$
+  \end{itemize}
+\end{definition}
+
+\begin{theoreme}[Existence et unicit\'{e}]
+  \begin{itemize}
+    \item Toute fonction \textbf{continue} sur un intervalle $I$ admet
+          des primitives sur $I$.
+    \item Si $F$ est une primitive de $f$ sur $I$, alors toute fonction
+          $G$ d\'{e}finie par $G(x) = F(x) + k$ \; ($k \in \R$) est aussi
+          une primitive de $f$ sur $I$.
+    \item \textbf{Unicit\'{e} avec condition initiale :} si $x_0 \in I$ et
+          $y_0 \in \R$, il existe \textbf{une seule} primitive $F$ de $f$ sur $I$
+          v\'{e}rifiant $F(x_0) = y_0$.
+  \end{itemize}
+\end{theoreme}
+
+\begin{remarque}
+  Deux primitives d'une m\^{e}me fonction diff\`{e}rent d'une constante.
+  On \'{e}crit souvent $F(x) + k$ ou $F(x) + C$ pour d\'{e}signer
+  \textbf{la famille des primitives} de $f$.
+\end{remarque}
+
+\begin{propriete}[Lin\'{e}arit\'{e} des primitives]
+  Si $F$ est une primitive de $f$ et $G$ une primitive de $g$ sur $I$,
+  et si $k \in \R$, alors :
+  \begin{itemize}
+    \item $F + G$ est une primitive de $f + g$ sur $I$
+    \item $kF$ est une primitive de $kf$ sur $I$
+  \end{itemize}
+  \[
+    \text{En r\'{e}sum\'{e} :} \quad
+    \int \bigl[\alpha f(x) + \beta g(x)\bigr]\,dx
+    = \alpha F(x) + \beta G(x) + C
+  \]
+\end{propriete}
+
+\begin{methode}[Trouver la primitive v\'{e}rifiant une condition initiale]
+  \begin{enumerate}
+    \item \'{E}crire la forme g\'{e}n\'{e}rale $F(x) = \ldots + k$.
+    \item Utiliser la condition $F(x_0) = y_0$ pour trouver $k$.
+    \item Substituer la valeur de $k$.
+  \end{enumerate}
+\end{methode}
+
+\begin{exemple}[R\'{e}solu : condition initiale]
+  Trouver la primitive de $f(x) = 2x + 3$ qui v\'{e}rifie $F(1) = 5$.
+
+  \medskip
+  Forme g\'{e}n\'{e}rale : $F(x) = x^2 + 3x + k$.
+
+  $F(1) = 5 \Rightarrow 1 + 3 + k = 5 \Rightarrow k = 1$.
+
+  Donc $F(x) = x^2 + 3x + 1$.
+\end{exemple}
+
+%----------------------------------------------------------
+\section{Formulaire des primitives usuelles}
+%----------------------------------------------------------
+
+\begin{propriete}[Primitives des fonctions de base]
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{2.4}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{\color{navy}Fonction $f(x)$}
+      & \textbf{\color{navy}Primitive $F(x)$}
+      & \textbf{\color{navy}Domaine} \\
+    \hline\hline
+    $a$ \; (constante)
+      & $ax$
+      & $\R$ \\
+    \hline
+    $x$
+      & $\dfrac{x^2}{2}$
+      & $\R$ \\
+    \hline
+    $x^n$ \; ($n \in \N$)
+      & $\dfrac{x^{n+1}}{n+1}$
+      & $\R$ \\
+    \hline
+    $x^n$ \; ($n \in \Z,\; n \neq -1$)
+      & $\dfrac{x^{n+1}}{n+1}$
+      & $\R^*$ ou $]0,+\infty[$ \\
+    \hline
+    $\dfrac{1}{x^2}$
+      & $-\dfrac{1}{x}$
+      & $\R^*$ \\
+    \hline
+    $\dfrac{1}{\sqrt{x}}$
+      & $2\sqrt{x}$
+      & $]0,+\infty[$ \\
+    \hline
+    $\dfrac{1}{x}$
+      & $\ln|x|$
+      & $\R^*$ \\
+    \hline
+    $e^x$
+      & $e^x$
+      & $\R$ \\
+    \hline
+    $\cos x$
+      & $\sin x$
+      & $\R$ \\
+    \hline
+    $\sin x$
+      & $-\cos x$
+      & $\R$ \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{propriete}
+
+%----------------------------------------------------------
+\section{Primitives des fonctions compos\'{e}es}
+%----------------------------------------------------------
+
+\begin{propriete}[Formulaire des primitives compos\'{e}es]
+  Soit $u$ une fonction d\'{e}rivable sur $I$.
+
+  \bigskip
+  \begin{center}
+  \renewcommand{\arraystretch}{2.4}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{\color{forest}Fonction $f(x)$}
+      & \textbf{\color{forest}Primitive $F(x)$}
+      & \textbf{\color{forest}Condition} \\
+    \hline\hline
+    $u'(x) \cdot u(x)$
+      & $\dfrac{[u(x)]^2}{2}$
+      & \\
+    \hline
+    $u'(x) \cdot [u(x)]^n$ \; ($n \neq -1$)
+      & $\dfrac{[u(x)]^{n+1}}{n+1}$
+      & $n \in \Z^*\setminus\{-1\}$ \\
+    \hline
+    $\dfrac{u'(x)}{u(x)}$
+      & $\ln|u(x)|$
+      & $u(x) \neq 0$ \\
+    \hline
+    $\dfrac{u'(x)}{\sqrt{u(x)}}$
+      & $2\sqrt{u(x)}$
+      & $u(x) > 0$ \\
+    \hline
+    $u'(x) \cdot e^{u(x)}$
+      & $e^{u(x)}$
+      & \\
+    \hline
+    $u'(x) \cdot \cos(u(x))$
+      & $\sin(u(x))$
+      & \\
+    \hline
+    $u'(x) \cdot \sin(u(x))$
+      & $-\cos(u(x))$
+      & \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{propriete}
+
+\begin{attention}
+  Pour reconna\^{i}tre une primitive compos\'{e}e, il faut \textbf{identifier $u$ et $u'$}
+  dans l'expression. Si $u'$ n'appara\^{i}t pas exactement, on peut
+  \textbf{ajuster par une constante} multiplicative.
+\end{attention}
+
+\begin{methode}[Calculer une primitive compos\'{e}e : ajustement par constante]
+  \begin{enumerate}
+    \item \textbf{Identifier} $u(x)$ et calculer $u'(x)$.
+    \item \textbf{V\'{e}rifier} si l'expression contient $u'(x)$ (exactement
+          ou \`{a} une constante pr\`{e}s).
+    \item \textbf{Ajuster} en multipliant/divisant par la constante
+          n\'{e}cessaire.
+    \item \textbf{V\'{e}rifier} en d\'{e}rivant le r\'{e}sultat.
+  \end{enumerate}
+\end{methode}
+
+\begin{exemple}[R\'{e}solus : primitives compos\'{e}es]
+  \begin{itemize}
+
+    \item $f(x) = (2x+1)^4$
+
+    $u = 2x+1$, $u' = 2$.
+    On voit $u^4$ mais il manque $u'=2$ devant.
+    On \'{e}crit : $f(x) = \dfrac{1}{2} \cdot 2 \cdot (2x+1)^4 = \dfrac{1}{2} \cdot u' \cdot u^4$.
+
+    Donc $F(x) = \dfrac{1}{2} \cdot \dfrac{(2x+1)^5}{5} = \dfrac{(2x+1)^5}{10}$.
+
+    \textit{V\'{e}rif. :} $F'(x) = \dfrac{5 \cdot 2(2x+1)^4}{10} = (2x+1)^4$ $\checkmark$
+
+    \bigskip
+    \item $f(x) = \dfrac{3x^2}{x^3 + 1}$
+
+    $u = x^3+1$, $u' = 3x^2$.
+    On reconna\^{i}t $\dfrac{u'}{u}$.
+    Donc $F(x) = \ln|x^3+1|$.
+
+    \bigskip
+    \item $f(x) = (4x-3)\,e^{2x^2 - 3x}$
+
+    $u = 2x^2-3x$, $u' = 4x-3$.
+    On reconna\^{i}t $u' \cdot e^u$.
+    Donc $F(x) = e^{2x^2 - 3x}$.
+
+    \bigskip
+    \item $f(x) = \dfrac{x}{\sqrt{x^2+1}}$
+
+    $u = x^2+1$, $u' = 2x$.
+    On voit $\dfrac{u'}{2\sqrt{u}}$, donc :
+    $f(x) = \dfrac{1}{2} \cdot \dfrac{2x}{\sqrt{x^2+1}} = \dfrac{1}{2} \cdot \dfrac{u'}{\sqrt{u}}$.
+    Donc $F(x) = \dfrac{1}{2} \cdot 2\sqrt{x^2+1} = \sqrt{x^2+1}$.
+
+  \end{itemize}
+\end{exemple}
+
+%----------------------------------------------------------
+\section{Primitives et tableaux de variations}
+%----------------------------------------------------------
+
+\begin{propriete}[Signe de $f$ et monotonie de $F$]
+  Puisque $F' = f$ :
+  \begin{itemize}
+    \item $f(x) > 0$ sur $I$ $\Rightarrow$ $F$ est \textbf{croissante} sur $I$
+    \item $f(x) < 0$ sur $I$ $\Rightarrow$ $F$ est \textbf{d\'{e}croissante} sur $I$
+    \item $f(x_0) = 0$ et $f$ change de signe en $x_0$
+          $\Rightarrow$ $F$ admet un \textbf{extremum} en $x_0$
+  \end{itemize}
+\end{propriete}
+
+\newpage
+%----------------------------------------------------------
+\section*{Exercices du chapitre}
+\addcontentsline{toc}{section}{Exercices : Fonctions primitives}
+%----------------------------------------------------------
+
+\begin{exercice}[1 : Primitives imm\'{e}diates]
+  Donner une primitive de chacune des fonctions suivantes :
+  \begin{multicols}{2}
+  \begin{enumerate}
+    \item $f(x) = 5x^3 - 2x + 7$
+    \item $f(x) = \dfrac{3}{x^2}$
+    \item $f(x) = \sqrt{x} + \dfrac{1}{\sqrt{x}}$
+    \item $f(x) = 4e^x - \dfrac{2}{x}$
+    \item $f(x) = \cos x - \sin x$
+    \item $f(x) = \dfrac{1}{x} + x^4$
+  \end{enumerate}
+  \end{multicols}
+\end{exercice}
+
+\begin{exercice}[2 : Primitives compos\'{e}es]
+  Reconnaître et calculer une primitive de :
+  \begin{multicols}{2}
+  \begin{enumerate}
+    \item $f(x) = (3x-1)^5$
+    \item $f(x) = \dfrac{2x}{x^2+4}$
+    \item $f(x) = x\,e^{x^2}$
+    \item $f(x) = \dfrac{1}{(2x+1)^3}$
+    \item $f(x) = \dfrac{x}{\sqrt{1-x^2}}$
+    \item $f(x) = (2x-1)e^{x^2-x}$
+  \end{enumerate}
+  \end{multicols}
+\end{exercice}
+
+\begin{exercice}[3 : Condition initiale]
+  Trouver la primitive de $f$ v\'{e}rifiant la condition donn\'{e}e :
+  \begin{enumerate}
+    \item $f(x) = 3x^2 - 4x$ et $F(0) = 2$
+    \item $f(x) = e^x + 1$ et $F(0) = 0$
+    \item $f(x) = \dfrac{1}{x}$ et $F(1) = 3$
+    \item $f(x) = \cos x$ et $F\!\left(\dfrac{\pi}{2}\right) = 1$
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[4 : Lin\'{e}arit\'{e}]
+  Calculer une primitive de :
+  \begin{enumerate}
+    \item $f(x) = 3(2x+1)^4 - \dfrac{5}{x}$ \quad sur $]0,+\infty[$
+    \item $f(x) = 2e^{3x} + 4\cos x$
+    \item $f(x) = \dfrac{x^3-x+1}{x^2}$ \quad (simplifier d'abord)
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[5 : V\'{e}rification par d\'{e}rivation]
+  V\'{e}rifier que $F$ est bien une primitive de $f$ :
+  \begin{enumerate}
+    \item $f(x) = \dfrac{x}{\sqrt{x^2+1}}$ \quad et \quad $F(x) = \sqrt{x^2+1}$
+    \item $f(x) = \ln x$ \quad et \quad $F(x) = x\ln x - x$
+    \item $f(x) = \sin^2 x$ \quad et \quad $F(x) = \dfrac{x}{2} - \dfrac{\sin(2x)}{4}$
+  \end{enumerate}
+\end{exercice}

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -rn \"[^\\\\x00-\\\\x7F]\" \"c:\\\\Users\\\\sousou\\\\Desktop\\\\Book_Maths_Bac_Eco\\\\chapitres\\\\\" 2>&1 | grep -v \"\\\\\\\\\\\\\\\\'\" | grep -v \"\\\\\\\\\\\\`\" | head -30)",
+      "Read(//c/Users/sousou/Desktop/Book_Maths_Bac_Eco/chapitres\" 2>&1 | grep -v /\" | grep -v \"/**)",
+      "Bash(dir)",
+      "Bash(grep -n \"subsection{.*\\\\$\\\\|section{.*\\\\$\\\\|chapter{.*\\\\$\" chapitres/chapitre1_limites.tex chapitres/chapitre2_derivation.tex chapitres/chapitre3_etude_fonctions.tex chapitres/chapitre4_suites.tex chapitres/chapitre5_exp.tex chapitres/chapitre6_log.tex chapitres/chapitre7_primitive.tex)",
+      "Bash(pdflatex -interaction=nonstopmode main.tex)"
+    ]
+  }
+}

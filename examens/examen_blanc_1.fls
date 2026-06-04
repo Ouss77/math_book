@@ -1,0 +1,8 @@
+PWD c:\Users\sousou\Desktop\Book_Maths_Bac_Eco\examens
+INPUT C:\Users\sousou\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
+INPUT c:\Users\sousou\Desktop\Book_Maths_Bac_Eco\examens\examen_blanc_1.tex
+OUTPUT examen_blanc_1.log
+INPUT C:\Users\sousou\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
+OUTPUT examen_blanc_1.pdf
+INPUT C:\Users\sousou\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
+INPUT C:\Users\sousou\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti10.tfm
